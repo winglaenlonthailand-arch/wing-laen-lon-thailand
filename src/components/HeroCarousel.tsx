@@ -39,6 +39,7 @@ export default function HeroCarousel() {
       {/* Gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
 
+
       {/* Content */}
       <div className="relative z-10 flex h-full items-center">
 
@@ -48,11 +49,13 @@ export default function HeroCarousel() {
             Thailand AI Running Platform
           </p>
 
+
           <h1 className="max-w-4xl text-6xl font-extrabold leading-tight md:text-7xl">
             WING LAEN LON
             <br />
             THAILAND
           </h1>
+
 
           <p className="mt-8 max-w-2xl text-xl leading-8 text-gray-200">
             Connecting runners, events, communities,
@@ -60,27 +63,43 @@ export default function HeroCarousel() {
             into one national platform.
           </p>
 
+
+
           <div className="mt-10 flex flex-wrap gap-4">
 
+
             <Link
-              href="/signup"
+              href="/register"
               className="rounded-full bg-blue-600 px-8 py-4 font-semibold transition hover:bg-blue-700"
             >
-              Create Passport
+              Create Athlete Passport
             </Link>
+
+
+            <Link
+              href="/login"
+              className="rounded-full border border-white px-8 py-4 font-semibold transition hover:bg-white hover:text-black"
+            >
+              Login
+            </Link>
+
 
             <Link
               href="/events"
-              className="rounded-full border border-white px-8 py-4 font-semibold transition hover:bg-white hover:text-black"
+              className="rounded-full border border-white/60 px-8 py-4 font-semibold transition hover:bg-white hover:text-black"
             >
               Explore Events
             </Link>
 
+
           </div>
+
 
         </div>
 
       </div>
+
+
 
       {/* Slide Indicator */}
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 gap-3">
@@ -98,6 +117,8 @@ export default function HeroCarousel() {
 
       </div>
 
+
+
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 right-8 text-center text-white">
 
@@ -105,6 +126,7 @@ export default function HeroCarousel() {
           href="/running"
           className="group inline-block"
         >
+
           <p className="text-sm tracking-widest group-hover:text-blue-300 transition">
             SCROLL
           </p>
@@ -112,9 +134,11 @@ export default function HeroCarousel() {
           <div className="mt-2 animate-bounce text-2xl group-hover:text-blue-300 transition">
             ↓
           </div>
+
         </Link>
 
       </div>
+
 
     </section>
   );

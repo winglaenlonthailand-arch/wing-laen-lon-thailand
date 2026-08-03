@@ -1,13 +1,10 @@
+import PassportCard from "@/components/passport/PassportCard";
+import { runners } from "@/data/mock/runners";
+
 export default function PassportPage() {
   return (
-    <main className="mx-auto max-w-7xl px-6 py-16">
-      <h1 className="text-4xl font-bold">
-        Runner Passport
-      </h1>
-
-      <p className="mt-6 text-gray-600">
-        มาตรฐานตัวตนนักวิ่งประเทศไทย
-      </p>
+    <main className="bg-gray-100 min-h-screen py-10">
+      <PassportCard runner={runners[0]} />
     </main>
   );
 }

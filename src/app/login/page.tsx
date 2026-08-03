@@ -1,6 +1,21 @@
-// FILE: src/app/login/page.tsx
+"use client";
+
+import { useState } from "react";
+
 
 export default function LoginPage() {
+
+  const [message, setMessage] = useState("");
+
+
+  const handleLogin = (provider: string) => {
+
+    setMessage(
+      `Login with ${provider} selected`
+    );
+
+  };
+
 
   return (
 
@@ -25,6 +40,7 @@ export default function LoginPage() {
 
 
           <button
+            onClick={() => handleLogin("Email")}
             className="w-full rounded-full bg-blue-600 px-6 py-3 text-white font-semibold hover:bg-blue-700 transition"
           >
             Login with Email
@@ -33,6 +49,7 @@ export default function LoginPage() {
 
 
           <button
+            onClick={() => handleLogin("Google")}
             className="w-full rounded-full border border-gray-300 px-6 py-3 font-semibold text-gray-700 hover:bg-gray-100 transition"
           >
             Login with Google
@@ -41,6 +58,7 @@ export default function LoginPage() {
 
 
           <button
+            onClick={() => handleLogin("LINE")}
             className="w-full rounded-full border border-gray-300 px-6 py-3 font-semibold text-gray-700 hover:bg-gray-100 transition"
           >
             Login with LINE
@@ -48,6 +66,26 @@ export default function LoginPage() {
 
 
         </div>
+
+
+
+        {
+          message && (
+
+            <div className="mt-6 rounded-xl bg-blue-50 p-4 text-center">
+
+              <p className="font-semibold text-blue-700">
+                {message}
+              </p>
+
+              <p className="text-sm text-gray-600 mt-1">
+                Authentication System Preparing
+              </p>
+
+            </div>
+
+          )
+        }
 
 
 
