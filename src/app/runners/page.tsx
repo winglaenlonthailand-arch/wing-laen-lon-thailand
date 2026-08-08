@@ -1,16 +1,29 @@
 // FILE: src/app/runners/page.tsx
 
 import RunnerCard from "@/components/RunnerCard";
-import { runnerProfiles } from "@/data/runnerProfiles";
+import { PrismaClient } from "@/generated/prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
 
-export default function RunnersPage() {
-  const runners = runnerProfiles;
+const adapter = new PrismaPg({
+  connectionString: process.env.DATABASE_URL!,
+});
+
+const prisma = new PrismaClient({
+  adapter,
+});
+
+export default async function RunnersPage() {
+  const athletes = await prisma.athlete.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
 
   return (
-    <main className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-7xl mx-auto">
+    <main className="min-h-screen bg-white">
+      <div className="mx-auto max-w-5xl px-4 py-10">
 
-        <h1 className="text-3xl font-bold mb-2 text-gray-900">
+        <h1 className="mb-2 text-3xl font-bold text-gray-900">
           National Runner Database
         </h1>
 
@@ -19,18 +32,16 @@ export default function RunnersPage() {
         </p>
 
         <div className="grid gap-4">
-
-          {runners.map((runner) => (
+          {athletes.map((athlete) => (
             <RunnerCard
-              key={runner.id}
-              id={String(runner.id)}
-              name={runner.runnerName}
-              province={runner.province}
-              level={runner.level}
-              distance={`${runner.totalDistance} km`}
+              key={athlete.id}
+              id={athlete.athleteId}
+              name={`${athlete.firstName} ${athlete.lastName}`}
+              province="-"
+              level={athlete.level}
+              distance="0 km"
             />
           ))}
-
         </div>
 
       </div>
