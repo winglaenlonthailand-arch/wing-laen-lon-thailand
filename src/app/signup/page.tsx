@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 
@@ -9,6 +9,7 @@ export default function SignupPage() {
     password: "",
   });
 
+  const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +22,7 @@ export default function SignupPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    setMessage("กำลังสมัครสมาชิก...");
+    setMessage("เธเธณเธฅเธฑเธเธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธ...");
 
     try {
       const res = await fetch("/api/auth/register", {
@@ -35,28 +36,25 @@ export default function SignupPage() {
       const data = await res.json();
 
       if (res.ok) {
-        setMessage("สมัครสมาชิกสำเร็จ");
+        setMessage("เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธเธชเธณเน€เธฃเนเธ");
       } else {
-        setMessage(data.message || "สมัครสมาชิกไม่สำเร็จ");
+        setMessage(data.message || "เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธเนเธกเนเธชเธณเน€เธฃเนเธ");
       }
     } catch (error) {
-      setMessage("เกิดข้อผิดพลาดในการเชื่อมต่อระบบ");
+      setMessage("เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เนเธเธเธฒเธฃเน€เธเธทเนเธญเธกเธ•เนเธญเธฃเธฐเธเธ");
     }
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-6 bg-gray-50">
-      <div className="w-full max-w-md bg-white rounded-xl shadow p-6">
-        <h1 className="text-2xl font-bold mb-6 text-center">
-          สมัครสมาชิก
-        </h1>
+    <main>
+      <div>
+        <h1>เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธ</h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-
           <input
             name="name"
             type="text"
-            placeholder="ชื่อ"
+            placeholder="เธเธทเนเธญ"
             value={form.name}
             onChange={handleChange}
             className="w-full border rounded p-3"
@@ -73,23 +71,33 @@ export default function SignupPage() {
             required
           />
 
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
-            className="w-full border rounded p-3"
-            required
-          />
+          <div className="relative">
+            <input
+              name="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              value={form.password}
+              onChange={handleChange}
+              className="w-full border rounded p-3 pr-12"
+              required
+            />
+
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600"
+              aria-label={showPassword ? "เธเนเธญเธ Password" : "เนเธชเธ”เธ Password"}
+            >
+              {showPassword ? "๐" : "๐‘๏ธ"}
+            </button>
+          </div>
 
           <button
             type="submit"
             className="w-full bg-blue-600 text-white rounded p-3"
           >
-            สมัครสมาชิก
+            เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธ
           </button>
-
         </form>
 
         {message && (
@@ -97,8 +105,8 @@ export default function SignupPage() {
             {message}
           </p>
         )}
-
       </div>
     </main>
   );
 }
+
