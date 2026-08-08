@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Athlete {
+  id             String   @id @default(cuid())
+  athleteId      String   @unique
+  firstName      String
+  lastName       String
+  nickname       String?
+  email          String   @unique
+  sports         Json?
+  level          String   @default("Beginner")
+  xp             Int      @default(0)
+  status         String   @default("pending")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
