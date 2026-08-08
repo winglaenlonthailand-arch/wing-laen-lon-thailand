@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 export default function RegisterPage() {
   const sports = [
@@ -19,26 +19,53 @@ export default function RegisterPage() {
     "Other",
   ];
 
-  const [message, setMessage] = useState("");
-  const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
     nickname: "",
+    dateOfBirth: "",
+    gender: "",
     email: "",
+    password: "",
+    confirmPassword: "",
+    phone: "",
+    address: "",
+    bloodGroup: "",
+    medicalCondition: "",
     sports: [] as string[],
+    level: "",
+    club: "",
+    device: "",
+    requestCard: false,
+    allowRanking: false,
+    acceptTerms: false,
   });
 
+  const passwordStrength = useMemo(() => {
+    const p = form.password;
+    let score = 0;
+    if (p.length >= 8) score++;
+    if (/[A-Z]/.test(p)) score++;
+    if (/[a-z]/.test(p)) score++;
+    if (/\d/.test(p)) score++;
+    if (/[^A-Za-z0-9]/.test(p)) score++;
+    if (score <= 2) return { label: "Weak", width: "33%" };
+    if (score <= 4) return { label: "Medium", width: "66%" };
+    return { label: "Strong", width: "100%" };
+  }, [form.password]);
+
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target;
+    const { name, value, type } = e.target as HTMLInputElement;
+    const checked = (e.target as HTMLInputElement).checked;
 
     setForm((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
@@ -46,154 +73,161 @@ export default function RegisterPage() {
     setForm((prev) => ({
       ...prev,
       sports: prev.sports.includes(sport)
-        ? prev.sports.filter((item) => item !== sport)
+        ? prev.sports.filter((s) => s !== sport)
         : [...prev.sports, sport],
     }));
   };
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>
-  ) => {
-    e.preventDefault();
-
-    setLoading(true);
-    setMessage("");
-    setSuccess(false);
-
-    try {
-      const response = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstName: form.firstName,
-          lastName: form.lastName,
-          nickname: form.nickname,
-          email: form.email,
-          sports: form.sports,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        setSuccess(true);
-        setMessage(
-          "สมัคร Athlete Passport สำเร็จแล้ว"
-        );
-      } else {
-        setSuccess(false);
-        setMessage(
-          data.message || "การสมัครไม่สำเร็จ"
-        );
-      }
-    } catch (error) {
-      console.error("REGISTER FORM ERROR:", error);
-
-      setSuccess(false);
-      setMessage(
-        "ไม่สามารถเชื่อมต่อระบบลงทะเบียนได้"
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <main className="min-h-screen p-6">
-      <div className="mx-auto max-w-4xl">
-
-        <h1 className="text-4xl font-bold">
-          Athlete Passport Registration
-        </h1>
-
+    <main className="min-h-screen bg-gray-50 px-4 py-10">
+      <div className="mx-auto max-w-5xl">
+        <h1 className="text-4xl font-bold">Athlete Passport Registration</h1>
         <p className="mt-2 text-gray-600">
           Thailand National Athlete Passport Platform
         </p>
 
-        <form
-          onSubmit={handleSubmit}
-          className="mt-8 space-y-6"
-        >
+        <div className="mt-6 h-2 overflow-hidden rounded-full bg-gray-200">
+          <div className="h-full w-1/3 bg-blue-600" />
+        </div>
 
-          <section className="rounded-xl border p-6">
-            <h2 className="text-2xl font-bold">
-              1. Personal Information
-            </h2>
+        <div className="mt-8 space-y-6">
+
+          <section className="rounded-xl border bg-white p-6">
+            <h2 className="text-2xl font-bold">1. Personal Information</h2>
 
             <input
               name="firstName"
-              className="mt-3 w-full rounded border p-3"
-              placeholder="First Name"
               value={form.firstName}
               onChange={handleChange}
-              required
+              className="mt-4 w-full rounded border p-3"
+              placeholder="First Name"
             />
 
             <input
               name="lastName"
-              className="mt-3 w-full rounded border p-3"
-              placeholder="Last Name"
               value={form.lastName}
               onChange={handleChange}
-              required
+              className="mt-3 w-full rounded border p-3"
+              placeholder="Last Name"
             />
 
             <input
               name="nickname"
-              className="mt-3 w-full rounded border p-3"
-              placeholder="Nickname"
               value={form.nickname}
               onChange={handleChange}
+              className="mt-3 w-full rounded border p-3"
+              placeholder="Nickname"
             />
 
             <input
+              type="date"
+              name="dateOfBirth"
+              value={form.dateOfBirth}
+              onChange={handleChange}
               className="mt-3 w-full rounded border p-3"
-              placeholder="Date of Birth"
             />
 
-            <select className="mt-3 w-full rounded border p-3">
-              <option>Gender</option>
+            <select
+              name="gender"
+              value={form.gender}
+              onChange={handleChange}
+              className="mt-3 w-full rounded border p-3"
+            >
+              <option value="">Gender</option>
               <option>Male</option>
               <option>Female</option>
               <option>Other</option>
             </select>
           </section>
 
-          <section className="rounded-xl border p-6">
-            <h2 className="text-2xl font-bold">
-              2. Contact Information
-            </h2>
+          <section className="rounded-xl border bg-white p-6">
+            <h2 className="text-2xl font-bold">2. Contact Information</h2>
 
             <input
-              name="email"
               type="email"
-              className="mt-3 w-full rounded border p-3"
-              placeholder="Email"
+              name="email"
               value={form.email}
               onChange={handleChange}
-              required
+              className="mt-4 w-full rounded border p-3"
+              placeholder="Email"
             />
 
+            <div className="relative mt-3">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={form.password}
+                onChange={handleChange}
+                className="w-full rounded border p-3 pr-14"
+                placeholder="Password (minimum 8 characters)"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((v) => !v)}
+                className="absolute right-3 top-1/2 -translate-y-1/2"
+              >
+                {showPassword ? "🙈" : "👁️"}
+              </button>
+            </div>
+
+            <div className="mt-3">
+              <div className="h-2 overflow-hidden rounded-full bg-gray-200">
+                <div
+                  className="h-full bg-green-500"
+                  style={{ width: passwordStrength.width }}
+                />
+              </div>
+              <p className="mt-1 text-sm text-gray-600">
+                Password strength: {passwordStrength.label}
+              </p>
+            </div>
+
+            <div className="relative mt-3">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                name="confirmPassword"
+                value={form.confirmPassword}
+                onChange={handleChange}
+                className="w-full rounded border p-3 pr-14"
+                placeholder="Confirm Password"
+              />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword((v) => !v)}
+                className="absolute right-3 top-1/2 -translate-y-1/2"
+              >
+                {showConfirmPassword ? "🙈" : "👁️"}
+              </button>
+            </div>
+
             <input
+              name="phone"
+              value={form.phone}
+              onChange={handleChange}
               className="mt-3 w-full rounded border p-3"
               placeholder="Phone Number"
             />
 
-            <input
+            <textarea
+              name="address"
+              value={form.address}
+              onChange={handleChange}
               className="mt-3 w-full rounded border p-3"
               placeholder="Address"
+              rows={3}
             />
           </section>
 
-          <section className="rounded-xl border p-6">
-            <h2 className="text-2xl font-bold">
-              3. Health Information
-            </h2>
+          <section className="rounded-xl border bg-white p-6">
+            <h2 className="text-2xl font-bold">3. Health Information</h2>
 
-            <select className="mt-3 w-full rounded border p-3">
-              <option>Blood Group</option>
+            <select
+              name="bloodGroup"
+              value={form.bloodGroup}
+              onChange={handleChange}
+              className="mt-4 w-full rounded border p-3"
+            >
+              <option value="">Blood Group</option>
               <option>A</option>
               <option>B</option>
               <option>AB</option>
@@ -201,32 +235,26 @@ export default function RegisterPage() {
             </select>
 
             <textarea
+              name="medicalCondition"
+              value={form.medicalCondition}
+              onChange={handleChange}
               className="mt-3 w-full rounded border p-3"
               placeholder="Medical Condition / Allergy"
+              rows={4}
             />
           </section>
 
-          <section className="rounded-xl border p-6">
-            <h2 className="text-2xl font-bold">
-              4. Sports Profile
-            </h2>
+          <section className="rounded-xl border bg-white p-6">
+            <h2 className="text-2xl font-bold">4. Sports Profile</h2>
+            <p className="mt-3">Select Your Sports</p>
 
-            <p className="mt-3">
-              Select Your Sports
-            </p>
-
-            <div className="mt-3 grid grid-cols-2 gap-3">
+            <div className="mt-4 grid grid-cols-2 gap-3">
               {sports.map((sport) => (
-                <label
-                  key={sport}
-                  className="flex gap-2"
-                >
+                <label key={sport} className="flex items-center gap-2">
                   <input
                     type="checkbox"
                     checked={form.sports.includes(sport)}
-                    onChange={() =>
-                      handleSportChange(sport)
-                    }
+                    onChange={() => handleSportChange(sport)}
                   />
                   {sport}
                 </label>
@@ -234,13 +262,16 @@ export default function RegisterPage() {
             </div>
           </section>
 
-          <section className="rounded-xl border p-6">
-            <h2 className="text-2xl font-bold">
-              5. Athlete Experience
-            </h2>
+          <section className="rounded-xl border bg-white p-6">
+            <h2 className="text-2xl font-bold">5. Athlete Experience</h2>
 
-            <select className="mt-3 w-full rounded border p-3">
-              <option>Level</option>
+            <select
+              name="level"
+              value={form.level}
+              onChange={handleChange}
+              className="mt-4 w-full rounded border p-3"
+            >
+              <option value="">Level</option>
               <option>Beginner</option>
               <option>Intermediate</option>
               <option>Advanced</option>
@@ -248,84 +279,103 @@ export default function RegisterPage() {
             </select>
 
             <input
+              name="club"
+              value={form.club}
+              onChange={handleChange}
               className="mt-3 w-full rounded border p-3"
               placeholder="Club / Team"
             />
           </section>
 
-          <section className="rounded-xl border p-6">
-            <h2 className="text-2xl font-bold">
-              6. GPS & Connected Device
-            </h2>
+          <section className="rounded-xl border bg-white p-6">
+            <h2 className="text-2xl font-bold">6. GPS & Connected Device</h2>
 
             <input
-              className="mt-3 w-full rounded border p-3"
+              name="device"
+              value={form.device}
+              onChange={handleChange}
+              className="mt-4 w-full rounded border p-3"
               placeholder="Garmin / Strava / Coros / Apple Watch"
             />
           </section>
 
-          <section className="rounded-xl border p-6">
-            <h2 className="text-2xl font-bold">
-              7. Smart Athlete Card
-            </h2>
+          <section className="rounded-xl border bg-white p-6">
+            <h2 className="text-2xl font-bold">7. Smart Athlete Card</h2>
 
-            <label className="mt-3 flex gap-2">
-              <input type="checkbox" />
+            <label className="mt-4 flex items-center gap-2">
+              <input
+                type="checkbox"
+                name="requestCard"
+                checked={form.requestCard}
+                onChange={handleChange}
+              />
               Request Physical Smart Card
             </label>
           </section>
 
-          <section className="rounded-xl border p-6">
-            <h2 className="text-2xl font-bold">
-              8. Consent
-            </h2>
+          <section className="rounded-xl border bg-white p-6">
+            <h2 className="text-2xl font-bold">8. Consent</h2>
 
-            <label className="mt-3 flex gap-2">
-              <input type="checkbox" />
+            <label className="mt-4 flex items-center gap-2">
+              <input
+                type="checkbox"
+                name="acceptTerms"
+                checked={form.acceptTerms}
+                onChange={handleChange}
+              />
               Accept Athlete Passport Terms
             </label>
 
-            <label className="mt-3 flex gap-2">
-              <input type="checkbox" />
+            <label className="mt-3 flex items-center gap-2">
+              <input
+                type="checkbox"
+                name="allowRanking"
+                checked={form.allowRanking}
+                onChange={handleChange}
+              />
               Allow Ranking Display
             </label>
           </section>
 
           <section className="rounded-xl bg-gray-100 p-6">
-            <h2 className="text-xl font-bold">
-              System Generate
-            </h2>
+            <h2 className="text-xl font-bold">System Generate</h2>
 
-            <p>National Athlete ID</p>
-            <p>Athlete Passport Number</p>
-            <p>QR Code</p>
-            <p>XP Level</p>
-            <p>Smart Card ID</p>
+            <div className="mt-4 grid gap-3 md:grid-cols-2">
+              <div className="rounded border bg-white p-4">
+                <p className="text-sm text-gray-500">National Athlete ID</p>
+                <p className="mt-1 font-semibold">THA-2026-000001</p>
+              </div>
+
+              <div className="rounded border bg-white p-4">
+                <p className="text-sm text-gray-500">Athlete Passport Number</p>
+                <p className="mt-1 font-semibold">AP-TH-260809-000001</p>
+              </div>
+
+              <div className="rounded border bg-white p-4">
+                <p className="text-sm text-gray-500">QR Code</p>
+                <div className="mt-2 h-24 w-24 rounded border bg-white" />
+              </div>
+
+              <div className="rounded border bg-white p-4">
+                <p className="text-sm text-gray-500">XP Level</p>
+                <p className="mt-1 font-semibold">Level 1</p>
+              </div>
+
+              <div className="rounded border bg-white p-4 md:col-span-2">
+                <p className="text-sm text-gray-500">Smart Card ID</p>
+                <p className="mt-1 font-semibold">SC-100001</p>
+              </div>
+            </div>
           </section>
 
           <button
-            type="submit"
-            disabled={loading}
-            className="rounded-xl bg-blue-600 px-8 py-3 text-white disabled:opacity-50"
+            type="button"
+            className="w-full rounded-xl bg-blue-600 px-8 py-4 text-lg font-semibold text-white"
           >
-            {loading
-              ? "Saving..."
-              : "Create Athlete Passport"}
+            Create Athlete Passport
           </button>
 
-          {message && (
-            <div
-              className={`rounded-xl border p-4 text-center font-semibold ${
-                success
-                  ? "bg-green-100 text-green-800"
-                  : "bg-red-100 text-red-800"
-              }`}
-            >
-              {message}
-            </div>
-          )}
-
-        </form>
+        </div>
       </div>
     </main>
   );
