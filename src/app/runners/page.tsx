@@ -1,11 +1,18 @@
-﻿// FILE: src/app/runners/page.tsx
-
-import RunnerCard from "@/components/RunnerCard";
+﻿import RunnerCard from "@/components/RunnerCard";
 import { PrismaClient } from "@/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
+const connectionString = process.env.DATABASE_URL;
+
+if (!connectionString) {
+  throw new Error("DATABASE_URL is not configured");
+}
+
 const adapter = new PrismaPg({
-  connectionString: process.env.DATABASE_URL!,
+  connectionString,
 });
 
 const prisma = new PrismaClient({
@@ -20,15 +27,14 @@ export default async function RunnersPage() {
   });
 
   return (
-    <main className="min-h-screen bg-white">
-      <div className="mx-auto max-w-5xl px-4 py-10">
-
+    <main className="min-h-screen bg-gray-50">
+      <div className="mx-auto max-w-6xl px-4 py-10">
         <h1 className="mb-2 text-3xl font-bold text-gray-900">
           National Runner Database
         </h1>
 
         <p className="mb-6 text-gray-600">
-          เธฃเธฐเธเธเธเธฒเธเธเนเธญเธกเธนเธฅเธเธฑเธเธงเธดเนเธ WING LAEN LON THAILAND
+          ฐานข้อมูลนักวิ่ง WING LAEN LON THAILAND
         </p>
 
         <div className="grid gap-4">
@@ -43,7 +49,6 @@ export default async function RunnersPage() {
             />
           ))}
         </div>
-
       </div>
     </main>
   );

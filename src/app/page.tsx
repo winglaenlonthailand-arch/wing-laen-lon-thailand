@@ -1,5 +1,4 @@
 ﻿import HeroCarousel from "@/components/HeroCarousel";
-
 import Statistics from "@/components/home/Statistics";
 import PassportPreview from "@/components/home/PassportPreview";
 import DashboardPreview from "@/components/home/DashboardPreview";
@@ -15,11 +14,9 @@ import RecommendationSection from "@/components/home/RecommendationSection";
 import RunningActivitySection from "@/components/home/RunningActivitySection";
 import NewsSection from "@/components/home/NewsSection";
 
-
 export default function Home() {
   return (
     <main>
-
       <HeroCarousel />
 
       <Statistics />
@@ -49,7 +46,6 @@ export default function Home() {
       <AIPlatformSection />
 
       <NewsSection />
-
     </main>
   );
 }
