@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+﻿import { NextResponse } from "next/server";
 import { PrismaClient } from "@/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import bcrypt from "bcryptjs";
@@ -6,11 +6,19 @@ import { Resend } from "resend";
 
 export const runtime = "nodejs";
 
+const databaseUrl = process.env.DATABASE_URL;
+
+if (!databaseUrl) {
+  throw new Error("DATABASE_URL is not configured");
+}
+
 const adapter = new PrismaPg({
-  connectionString: process.env.DATABASE_URL!,
+  connectionString: databaseUrl,
 });
 
-const prisma = new PrismaClient({ adapter });
+const prisma = new PrismaClient({
+  adapter,
+});
 
 export async function POST(request: Request) {
   try {
@@ -31,21 +39,17 @@ export async function POST(request: Request) {
           success: false,
           message: "Required information missing",
         },
-        {
-          status: 400,
-        }
+        { status: 400 }
       );
     }
 
-    if (password.length < 8) {
+    if (String(password).length < 8) {
       return NextResponse.json(
         {
           success: false,
           message: "Password must be at least 8 characters",
         },
-        {
-          status: 400,
-        }
+        { status: 400 }
       );
     }
 
@@ -66,14 +70,12 @@ export async function POST(request: Request) {
           success: false,
           message: "Email already registered",
         },
-        {
-          status: 409,
-        }
+        { status: 409 }
       );
     }
 
     const passwordHash = await bcrypt.hash(
-      password,
+      String(password),
       12
     );
 
@@ -85,7 +87,8 @@ export async function POST(request: Request) {
       Date.now() + 10 * 60 * 1000
     );
 
-    const athleteId = "ATH-" + Date.now();
+    const athleteId =
+      "ATH-" + Date.now().toString();
 
     const athlete = await prisma.athlete.create({
       data: {
@@ -100,14 +103,19 @@ export async function POST(request: Request) {
         emailVerified: false,
         verificationCode,
         verificationCodeExpiresAt,
-        sports: sports || null,
+        sports: Array.isArray(sports)
+          ? sports
+          : undefined,
         level: "Beginner",
         xp: 0,
         status: "pending",
       },
     });
 
-    if (!process.env.RESEND_API_KEY) {
+    const resendApiKey =
+      process.env.RESEND_API_KEY;
+
+    if (!resendApiKey) {
       console.error(
         "RESEND_API_KEY is missing from environment variables."
       );
@@ -122,34 +130,24 @@ export async function POST(request: Request) {
             email: athlete.email,
           },
         },
-        {
-          status: 500,
-        }
+        { status: 500 }
       );
     }
 
-    const resend = new Resend(
-      process.env.RESEND_API_KEY
-    );
+    const resend = new Resend(resendApiKey);
 
     const fromEmail =
       process.env.RESEND_FROM_EMAIL ||
       "onboarding@resend.dev";
-return (
+
+    const { data: emailData, error: emailError } =
       await resend.emails.send({
         from: fromEmail,
         to: [normalizedEmail],
         subject:
           "WING LAEN LON THAILAND - Email Verification",
         html: `
-          <div
-            style="
-              font-family: Arial, sans-serif;
-              max-width: 600px;
-              margin: 0 auto;
-              padding: 30px;
-            "
-          >
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 30px;">
             <h1 style="color: #2563eb;">
               Athlete Passport
             </h1>
@@ -167,18 +165,7 @@ return (
               Your email verification code is:
             </p>
 
-            <div
-              style="
-                font-size: 36px;
-                font-weight: bold;
-                letter-spacing: 8px;
-                text-align: center;
-                padding: 20px;
-                margin: 20px 0;
-                background: #f3f4f6;
-                border-radius: 12px;
-              "
-            >
+            <div style="font-size: 36px; font-weight: bold; letter-spacing: 8px; text-align: center; padding: 20px; margin: 20px 0; background: #f3f4f6; border-radius: 12px;">
               ${verificationCode}
             </div>
 
@@ -194,12 +181,7 @@ return (
 
             <hr style="margin: 30px 0;" />
 
-            <p
-              style="
-                color: #6b7280;
-                font-size: 14px;
-              "
-            >
+            <p style="color: #6b7280; font-size: 14px;">
               WING LAEN LON THAILAND<br />
               Thailand National Athlete Passport Platform
             </p>
@@ -223,9 +205,7 @@ return (
             email: athlete.email,
           },
         },
-        {
-          status: 500,
-        }
+        { status: 500 }
       );
     }
 
@@ -240,6 +220,7 @@ return (
         lastName: athlete.lastName,
         email: athlete.email,
         emailVerified: athlete.emailVerified,
+        emailId: emailData?.id ?? null,
       },
     });
   } catch (error) {
@@ -253,9 +234,7 @@ return (
         success: false,
         message: "Registration failed",
       },
-      {
-        status: 500,
-      }
+      { status: 500 }
     );
   }
 }
