@@ -1,4 +1,4 @@
-export interface PartnerApplication {
+﻿export interface PartnerApplication {
   id: number;
 
   companyName: string;
@@ -50,7 +50,7 @@ export const partnerApplications: PartnerApplication[] = [
     website: "https://example.com",
 
     description:
-      "รองเท้าวิ่งและอุปกรณ์สำหรับนักกีฬา",
+      "เธฃเธญเธเน€เธ—เนเธฒเธงเธดเนเธเนเธฅเธฐเธญเธธเธเธเธฃเธ“เนเธชเธณเธซเธฃเธฑเธเธเธฑเธเธเธตเธฌเธฒ",
 
     status: "Pending",
 
@@ -74,7 +74,7 @@ export const partnerApplications: PartnerApplication[] = [
     website: "https://example.com",
 
     description:
-      "เครื่องดื่มสุขภาพสำหรับนักวิ่ง",
+      "เน€เธเธฃเธทเนเธญเธเธ”เธทเนเธกเธชเธธเธเธ เธฒเธเธชเธณเธซเธฃเธฑเธเธเธฑเธเธงเธดเนเธ",
 
     status: "Approved",
 

@@ -1,4 +1,4 @@
-export type CampaignStatus =
+﻿export type CampaignStatus =
   | "Draft"
   | "Pending"
   | "Active"

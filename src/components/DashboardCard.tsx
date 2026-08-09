@@ -1,4 +1,4 @@
-type DashboardCardProps = {
+﻿type DashboardCardProps = {
   title: string;
   value: string;
 };

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 
@@ -98,8 +98,8 @@ export default function LoginPage() {
 
 
           <p className="mt-2 text-sm text-gray-600">
-            ระบบสมาชิก Runner Passport และ Authentication
-            กำลังพัฒนา
+            เธฃเธฐเธเธเธชเธกเธฒเธเธดเธ Runner Passport เนเธฅเธฐ Authentication
+            เธเธณเธฅเธฑเธเธเธฑเธ’เธเธฒ
           </p>
 
 

@@ -1,8 +1,8 @@
-export const events = [
+﻿export const events = [
   {
     id: "E001",
     name: "Chiang Mai Marathon",
-    province: "เชียงใหม่",
+    province: "เน€เธเธตเธขเธเนเธซเธกเน",
     date: "2026-11-15",
     distance: "Marathon",
     participants: 5000,
@@ -10,7 +10,7 @@ export const events = [
   {
     id: "E002",
     name: "Nan Running Festival",
-    province: "น่าน",
+    province: "เธเนเธฒเธ",
     date: "2026-12-05",
     distance: "Half Marathon",
     participants: 1800,

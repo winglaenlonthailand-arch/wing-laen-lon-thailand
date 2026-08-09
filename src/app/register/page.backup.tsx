@@ -1,0 +1,576 @@
+"use client";
+
+import { useState } from "react";
+
+export default function RegisterPage() {
+  const sports = [
+    "Running",
+    "Trail Running",
+    "Marathon",
+    "Ultra Marathon",
+    "Cycling",
+    "Mountain Bike",
+    "Swimming",
+    "Triathlon",
+    "Football",
+    "Basketball",
+    "Badminton",
+    "Fitness",
+    "Other",
+  ];
+
+  const [message, setMessage] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const [verificationCode, setVerificationCode] = useState("");
+  const [showVerification, setShowVerification] = useState(false);
+  const [verificationLoading, setVerificationLoading] = useState(false);
+  const [verificationMessage, setVerificationMessage] = useState("");
+  const [verificationSuccess, setVerificationSuccess] = useState(false);
+
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    nickname: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    sports: [] as string[],
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { name, value } = e.target;
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSportChange = (sport: string) => {
+    setForm((prev) => ({
+      ...prev,
+      sports: prev.sports.includes(sport)
+        ? prev.sports.filter((item) => item !== sport)
+        : [...prev.sports, sport],
+    }));
+  };
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+
+    setLoading(true);
+    setMessage("");
+    setSuccess(false);
+    setVerificationMessage("");
+    setVerificationSuccess(false);
+
+    if (form.password.length < 8) {
+      setLoading(false);
+      setMessage(
+        "Password must be at least 8 characters"
+      );
+      return;
+    }
+
+    if (form.password !== form.confirmPassword) {
+      setLoading(false);
+      setMessage(
+        "Password and Confirm Password do not match"
+      );
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        "/api/auth/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstName: form.firstName,
+            lastName: form.lastName,
+            nickname: form.nickname,
+            email: form.email,
+            password: form.password,
+            sports: form.sports,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSuccess(true);
+        setMessage(
+          "Athlete Passport created. Please check your email for the verification code."
+        );
+        setShowVerification(true);
+      } else {
+        setSuccess(false);
+        setMessage(
+          data.message || "Registration failed"
+        );
+
+        if (data.data?.athleteId) {
+          setShowVerification(true);
+        }
+      }
+    } catch (error) {
+      console.error(
+        "REGISTER FORM ERROR:",
+        error
+      );
+
+      setSuccess(false);
+      setMessage(
+        "Unable to connect to registration system"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleVerifyEmail = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+
+    setVerificationLoading(true);
+    setVerificationMessage("");
+    setVerificationSuccess(false);
+
+    if (verificationCode.length !== 6) {
+      setVerificationLoading(false);
+      setVerificationMessage(
+        "Verification code must be 6 digits."
+      );
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        "/api/auth/verify-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: form.email,
+            verificationCode,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setVerificationSuccess(true);
+        setVerificationMessage(
+          "Email verified successfully. Your Athlete Passport is now active."
+        );
+      } else {
+        setVerificationSuccess(false);
+        setVerificationMessage(
+          data.message ||
+            "Email verification failed."
+        );
+      }
+    } catch (error) {
+      console.error(
+        "EMAIL VERIFICATION ERROR:",
+        error
+      );
+
+      setVerificationSuccess(false);
+      setVerificationMessage(
+        "Unable to connect to email verification system."
+      );
+    } finally {
+      setVerificationLoading(false);
+    }
+  };
+
+  return (
+    <main className="min-h-screen bg-gray-50 px-4 py-10">
+      <div className="mx-auto max-w-4xl">
+        <h1 className="text-4xl font-bold">
+          Athlete Passport Registration
+        </h1>
+
+        <p className="mt-2 text-gray-600">
+          Thailand National Athlete Passport Platform
+        </p>
+
+        <form
+          onSubmit={handleSubmit}
+          className="mt-8 space-y-6"
+        >
+          <section className="rounded-xl border bg-white p-6">
+            <h2 className="text-2xl font-bold">
+              1. Personal Information
+            </h2>
+
+            <input
+              name="firstName"
+              className="mt-3 w-full rounded border p-3"
+              placeholder="First Name"
+              value={form.firstName}
+              onChange={handleChange}
+              required
+            />
+
+            <input
+              name="lastName"
+              className="mt-3 w-full rounded border p-3"
+              placeholder="Last Name"
+              value={form.lastName}
+              onChange={handleChange}
+              required
+            />
+
+            <input
+              name="nickname"
+              className="mt-3 w-full rounded border p-3"
+              placeholder="Nickname"
+              value={form.nickname}
+              onChange={handleChange}
+            />
+
+            <input
+              className="mt-3 w-full rounded border p-3"
+              placeholder="Date of Birth"
+            />
+
+            <select className="mt-3 w-full rounded border p-3">
+              <option>Gender</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </section>
+
+          <section className="rounded-xl border bg-white p-6">
+            <h2 className="text-2xl font-bold">
+              2. Contact Information
+            </h2>
+
+            <input
+              name="email"
+              type="email"
+              className="mt-3 w-full rounded border p-3"
+              placeholder="Email"
+              value={form.email}
+              onChange={handleChange}
+              required
+            />
+
+            <div className="relative mt-3">
+              <input
+                name="password"
+                type={
+                  showPassword
+                    ? "text"
+                    : "password"
+                }
+                minLength={8}
+                className="w-full rounded border p-3 pr-14"
+                placeholder="Password (minimum 8 characters)"
+                value={form.password}
+                onChange={handleChange}
+                required
+              />
+
+              <button
+                type="button"
+                onClick={() =>
+                  setShowPassword(
+                    (prev) => !prev
+                  )
+                }
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-xl"
+                aria-label={
+                  showPassword
+                    ? "Hide password"
+                    : "Show password"
+                }
+              >
+                {showPassword ? "🙈" : "👁️"}
+              </button>
+            </div>
+
+            <div className="relative mt-3">
+              <input
+                name="confirmPassword"
+                type={
+                  showConfirmPassword
+                    ? "text"
+                    : "password"
+                }
+                minLength={8}
+                className="w-full rounded border p-3 pr-14"
+                placeholder="Confirm Password"
+                value={form.confirmPassword}
+                onChange={handleChange}
+                required
+              />
+
+              <button
+                type="button"
+                onClick={() =>
+                  setShowConfirmPassword(
+                    (prev) => !prev
+                  )
+                }
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-xl"
+                aria-label={
+                  showConfirmPassword
+                    ? "Hide confirm password"
+                    : "Show confirm password"
+                }
+              >
+                {showConfirmPassword
+                  ? "🙈"
+                  : "👁️"}
+              </button>
+            </div>
+
+            <input
+              className="mt-3 w-full rounded border p-3"
+              placeholder="Phone Number"
+            />
+
+            <input
+              className="mt-3 w-full rounded border p-3"
+              placeholder="Address"
+            />
+          </section>
+
+          <section className="rounded-xl border bg-white p-6">
+            <h2 className="text-2xl font-bold">
+              3. Health Information
+            </h2>
+
+            <select className="mt-3 w-full rounded border p-3">
+              <option>Blood Group</option>
+              <option>A</option>
+              <option>B</option>
+              <option>AB</option>
+              <option>O</option>
+            </select>
+
+            <textarea
+              className="mt-3 w-full rounded border p-3"
+              placeholder="Medical Condition / Allergy"
+            />
+          </section>
+
+          <section className="rounded-xl border bg-white p-6">
+            <h2 className="text-2xl font-bold">
+              4. Sports Profile
+            </h2>
+
+            <p className="mt-3">
+              Select Your Sports
+            </p>
+
+            <div className="mt-3 grid grid-cols-2 gap-3">
+              {sports.map((sport) => (
+                <label
+                  key={sport}
+                  className="flex gap-2"
+                >
+                  <input
+                    type="checkbox"
+                    checked={form.sports.includes(
+                      sport
+                    )}
+                    onChange={() =>
+                      handleSportChange(
+                        sport
+                      )
+                    }
+                  />
+                  {sport}
+                </label>
+              ))}
+            </div>
+          </section>
+
+          <section className="rounded-xl border bg-white p-6">
+            <h2 className="text-2xl font-bold">
+              5. Athlete Experience
+            </h2>
+
+            <select className="mt-3 w-full rounded border p-3">
+              <option>Level</option>
+              <option>Beginner</option>
+              <option>Intermediate</option>
+              <option>Advanced</option>
+              <option>Professional</option>
+            </select>
+
+            <input
+              className="mt-3 w-full rounded border p-3"
+              placeholder="Club / Team"
+            />
+          </section>
+
+          <section className="rounded-xl border bg-white p-6">
+            <h2 className="text-2xl font-bold">
+              6. GPS & Connected Device
+            </h2>
+
+            <input
+              className="mt-3 w-full rounded border p-3"
+              placeholder="Garmin / Strava / Coros / Apple Watch"
+            />
+          </section>
+
+          <section className="rounded-xl border bg-white p-6">
+            <h2 className="text-2xl font-bold">
+              7. Smart Athlete Card
+            </h2>
+
+            <label className="mt-3 flex gap-2">
+              <input type="checkbox" />
+              Request Physical Smart Card
+            </label>
+          </section>
+
+          <section className="rounded-xl border bg-white p-6">
+            <h2 className="text-2xl font-bold">
+              8. Consent
+            </h2>
+
+            <label className="mt-3 flex gap-2">
+              <input
+                type="checkbox"
+                required
+              />
+              Accept Athlete Passport Terms
+            </label>
+
+            <label className="mt-3 flex gap-2">
+              <input type="checkbox" />
+              Allow Ranking Display
+            </label>
+          </section>
+
+          <section className="rounded-xl bg-gray-100 p-6">
+            <h2 className="text-xl font-bold">
+              System Generate
+            </h2>
+
+            <p>National Athlete ID</p>
+            <p>Athlete Passport Number</p>
+            <p>QR Code</p>
+            <p>XP Level</p>
+            <p>Smart Card ID</p>
+          </section>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="rounded-xl bg-blue-600 px-8 py-3 text-white disabled:opacity-50"
+          >
+            {loading
+              ? "Saving..."
+              : "Create Athlete Passport"}
+          </button>
+
+          {message && (
+            <div
+              className={
+                "rounded-xl border p-4 text-center font-semibold " +
+                (success
+                  ? "bg-green-100 text-green-800"
+                  : "bg-red-100 text-red-800")
+              }
+            >
+              {message}
+            </div>
+          )}
+        </form>
+
+        {showVerification && (
+          <section className="mt-8 rounded-xl border-2 border-blue-200 bg-white p-6">
+            <h2 className="text-2xl font-bold">
+              Email Verification
+            </h2>
+
+            <p className="mt-2 text-gray-600">
+              Enter the 6-digit verification code
+              sent to:
+            </p>
+
+            <p className="mt-1 font-semibold">
+              {form.email}
+            </p>
+
+            <form
+              onSubmit={handleVerifyEmail}
+              className="mt-5"
+            >
+              <input
+                type="text"
+                inputMode="numeric"
+                maxLength={6}
+                pattern="[0-9]{6}"
+                className="w-full rounded border p-4 text-center text-3xl tracking-[0.5em]"
+                placeholder="000000"
+                value={verificationCode}
+                onChange={(e) =>
+                  setVerificationCode(
+                    e.target.value.replace(
+                      /\D/g,
+                      ""
+                    )
+                  )
+                }
+                required
+              />
+
+              <button
+                type="submit"
+                disabled={
+                  verificationLoading ||
+                  verificationCode.length !== 6
+                }
+                className="mt-4 w-full rounded-xl bg-green-600 px-8 py-3 font-semibold text-white disabled:opacity-50"
+              >
+                {verificationLoading
+                  ? "Verifying..."
+                  : "Confirm Email"}
+              </button>
+
+              {verificationMessage && (
+                <div
+                  className={
+                    "mt-4 rounded-xl border p-4 text-center font-semibold " +
+                    (verificationSuccess
+                      ? "bg-green-100 text-green-800"
+                      : "bg-red-100 text-red-800")
+                  }
+                >
+                  {verificationMessage}
+                </div>
+              )}
+            </form>
+          </section>
+        )}
+      </div>
+    </main>
+  );
+}

@@ -1,4 +1,4 @@
-export interface PartnerApplication {
+﻿export interface PartnerApplication {
   id?: string;
 
   companyName: string;

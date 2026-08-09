@@ -1,4 +1,4 @@
-import { RunnerRecommendation } from "@/types/runnerRecommendation";
+﻿import { RunnerRecommendation } from "@/types/runnerRecommendation";
 
 
 export const runnerRecommendations: RunnerRecommendation[] = [

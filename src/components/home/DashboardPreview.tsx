@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 import { runnerProfiles } from "@/data/runnerProfiles";
 
@@ -19,7 +19,7 @@ export default function DashboardPreview() {
           </h2>
 
           <p className="mt-4 text-gray-600">
-            ระบบข้อมูลนักวิ่งส่วนบุคคล ของ WING LAEN LON THAILAND
+            เธฃเธฐเธเธเธเนเธญเธกเธนเธฅเธเธฑเธเธงเธดเนเธเธชเนเธงเธเธเธธเธเธเธฅ เธเธญเธ WING LAEN LON THAILAND
           </p>
 
         </div>
@@ -116,7 +116,7 @@ export default function DashboardPreview() {
               </h4>
 
               <p className="mt-2 text-gray-600">
-                เข้าร่วมกิจกรรมแล้ว {runner.totalEvents} รายการ
+                เน€เธเนเธฒเธฃเนเธงเธกเธเธดเธเธเธฃเธฃเธกเนเธฅเนเธง {runner.totalEvents} เธฃเธฒเธขเธเธฒเธฃ
               </p>
 
             </Link>
@@ -169,7 +169,7 @@ export default function DashboardPreview() {
               className="inline-flex rounded-full bg-blue-600 px-8 py-3 text-white font-semibold hover:bg-blue-700 transition"
             >
 
-              เปิด Runner Profile
+              เน€เธเธดเธ” Runner Profile
 
             </Link>
 

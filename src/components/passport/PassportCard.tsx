@@ -1,4 +1,4 @@
-type Runner = {
+﻿type Runner = {
   id: string;
   name: string;
   province: string;
@@ -38,7 +38,7 @@ export default function PassportCard({
           <div className="flex flex-col items-center">
 
             <div className="flex h-40 w-40 items-center justify-center rounded-full bg-gray-200 text-6xl">
-              🏃
+              ๐
             </div>
 
             <p className="mt-4 text-gray-500">
@@ -132,7 +132,7 @@ export default function PassportCard({
             <div className="mt-10 rounded-2xl border-2 border-dashed p-8 text-center">
 
               <div className="text-6xl">
-                ▣
+                โ–ฃ
               </div>
 
               <p className="mt-4 font-semibold">

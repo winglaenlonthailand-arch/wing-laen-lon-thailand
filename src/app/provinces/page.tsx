@@ -1,4 +1,4 @@
-// FILE: src/app/provinces/page.tsx
+﻿// FILE: src/app/provinces/page.tsx
 
 import ProvinceCard from "@/components/ProvinceCard";
 
@@ -23,7 +23,7 @@ export default function ProvinceRankingPage() {
         </h1>
 
         <p className="mb-8 text-gray-600">
-          จังหวัดทั้งหมดในระบบ WING LAEN LON THAILAND
+          เธเธฑเธเธซเธงเธฑเธ”เธ—เธฑเนเธเธซเธกเธ”เนเธเธฃเธฐเธเธ WING LAEN LON THAILAND
         </p>
 
         <div className="grid gap-4">

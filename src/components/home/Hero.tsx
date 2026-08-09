@@ -1,4 +1,4 @@
-export default function Hero() {
+﻿export default function Hero() {
   return (
     <section className="bg-blue-700 text-white py-24">
       <div className="mx-auto max-w-7xl px-6">

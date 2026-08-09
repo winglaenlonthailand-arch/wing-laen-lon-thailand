@@ -1,4 +1,4 @@
-export type RunnerInterest =
+﻿export type RunnerInterest =
   | "Beginner"
   | "Marathon"
   | "Trail"

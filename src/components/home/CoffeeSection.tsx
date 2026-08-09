@@ -1,4 +1,4 @@
-// FILE: src/components/home/CoffeeSection.tsx
+﻿// FILE: src/components/home/CoffeeSection.tsx
 
 "use client";
 
@@ -8,19 +8,19 @@ const coffeeFeatures = [
   {
     title: "Runner Energy",
     description:
-      "กาแฟคุณภาพสำหรับนักวิ่ง ช่วยเติมพลังระหว่างการฝึกซ้อมและกิจกรรม",
+      "เธเธฒเนเธเธเธธเธ“เธ เธฒเธเธชเธณเธซเธฃเธฑเธเธเธฑเธเธงเธดเนเธ เธเนเธงเธขเน€เธ•เธดเธกเธเธฅเธฑเธเธฃเธฐเธซเธงเนเธฒเธเธเธฒเธฃเธเธถเธเธเนเธญเธกเนเธฅเธฐเธเธดเธเธเธฃเธฃเธก",
     slug: "runner-energy",
   },
   {
     title: "Local Community Coffee",
     description:
-      "เชื่อมโยงกาแฟชุมชน เกษตรกร และผู้ประกอบการท้องถิ่นเข้าสู่ระบบ",
+      "เน€เธเธทเนเธญเธกเนเธขเธเธเธฒเนเธเธเธธเธกเธเธ เน€เธเธฉเธ•เธฃเธเธฃ เนเธฅเธฐเธเธนเนเธเธฃเธฐเธเธญเธเธเธฒเธฃเธ—เนเธญเธเธ–เธดเนเธเน€เธเนเธฒเธชเธนเนเธฃเธฐเธเธ",
     slug: "local-community-coffee",
   },
   {
     title: "Coffee Ecosystem",
     description:
-      "สร้างพื้นที่เชื่อมต่อระหว่างนักวิ่ง ร้านกาแฟ และพันธมิตรทั่วประเทศ",
+      "เธชเธฃเนเธฒเธเธเธทเนเธเธ—เธตเนเน€เธเธทเนเธญเธกเธ•เนเธญเธฃเธฐเธซเธงเนเธฒเธเธเธฑเธเธงเธดเนเธ เธฃเนเธฒเธเธเธฒเนเธ เนเธฅเธฐเธเธฑเธเธเธกเธดเธ•เธฃเธ—เธฑเนเธงเธเธฃเธฐเน€เธ—เธจ",
     slug: "coffee-ecosystem",
   },
 ];
@@ -38,7 +38,7 @@ export default function CoffeeSection() {
           </h2>
 
           <p className="mt-3 text-gray-600">
-            กาแฟ ชุมชน และนักวิ่ง เชื่อมต่อเป็นระบบเดียวกัน
+            เธเธฒเนเธ เธเธธเธกเธเธ เนเธฅเธฐเธเธฑเธเธงเธดเนเธ เน€เธเธทเนเธญเธกเธ•เนเธญเน€เธเนเธเธฃเธฐเธเธเน€เธ”เธตเธขเธงเธเธฑเธ
           </p>
 
         </div>
@@ -62,7 +62,7 @@ export default function CoffeeSection() {
               </p>
 
               <div className="mt-6 text-blue-600 font-semibold">
-                ดูรายละเอียด →
+                เธ”เธนเธฃเธฒเธขเธฅเธฐเน€เธญเธตเธขเธ” โ’
               </div>
 
             </Link>
@@ -81,7 +81,7 @@ export default function CoffeeSection() {
           </h3>
 
           <p className="mt-3 text-gray-600">
-            Product Partner สำหรับกิจกรรมนักวิ่งและ Community Platform
+            Product Partner เธชเธณเธซเธฃเธฑเธเธเธดเธเธเธฃเธฃเธกเธเธฑเธเธงเธดเนเธเนเธฅเธฐ Community Platform
           </p>
 
           <div className="mt-6 flex justify-center gap-4">
@@ -91,7 +91,7 @@ export default function CoffeeSection() {
             </span>
 
             <span className="rounded-full border border-blue-600 px-8 py-3 text-blue-600 font-semibold">
-              ดูสินค้า
+              เธ”เธนเธชเธดเธเธเนเธฒ
             </span>
 
           </div>

@@ -1,23 +1,23 @@
-import ChallengeCard from "@/components/ChallengeCard";
+﻿import ChallengeCard from "@/components/ChallengeCard";
 
 const challenges = [
   {
     name: "Thailand Running Challenge 2027",
-    province: "ทั่วประเทศ",
+    province: "เธ—เธฑเนเธงเธเธฃเธฐเน€เธ—เธจ",
     level: "National",
     reward: "500,000 THB",
     status: "Open",
   },
   {
     name: "Nan Community Run",
-    province: "น่าน",
+    province: "เธเนเธฒเธ",
     level: "Province",
     reward: "50,000 THB",
     status: "Active",
   },
   {
     name: "Chiang Mai Mountain Challenge",
-    province: "เชียงใหม่",
+    province: "เน€เธเธตเธขเธเนเธซเธกเน",
     level: "Advanced",
     reward: "100,000 THB",
     status: "Upcoming",

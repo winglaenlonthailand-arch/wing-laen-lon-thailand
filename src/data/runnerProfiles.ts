@@ -1,4 +1,4 @@
-import { RunnerProfile } from "@/types/runnerProfile";
+﻿import { RunnerProfile } from "@/types/runnerProfile";
 
 
 export const runnerProfiles: RunnerProfile[] = [

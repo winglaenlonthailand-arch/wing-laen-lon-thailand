@@ -1,4 +1,4 @@
-// FILE: src/components/home/PartnerSection.tsx
+﻿// FILE: src/components/home/PartnerSection.tsx
 
 "use client";
 
@@ -8,19 +8,19 @@ const partners = [
   {
     name: "Running Community",
     description:
-      "เชื่อมต่อกลุ่มนักวิ่ง ชมรม และเครือข่ายสุขภาพทั่วประเทศไทย",
+      "เน€เธเธทเนเธญเธกเธ•เนเธญเธเธฅเธธเนเธกเธเธฑเธเธงเธดเนเธ เธเธกเธฃเธก เนเธฅเธฐเน€เธเธฃเธทเธญเธเนเธฒเธขเธชเธธเธเธ เธฒเธเธ—เธฑเนเธงเธเธฃเธฐเน€เธ—เธจเนเธ—เธข",
     slug: "running-community",
   },
   {
     name: "Local Business",
     description:
-      "เปิดพื้นที่ให้ร้านค้าและธุรกิจท้องถิ่นเข้าร่วมระบบ Ecosystem",
+      "เน€เธเธดเธ”เธเธทเนเธเธ—เธตเนเนเธซเนเธฃเนเธฒเธเธเนเธฒเนเธฅเธฐเธเธธเธฃเธเธดเธเธ—เนเธญเธเธ–เธดเนเธเน€เธเนเธฒเธฃเนเธงเธกเธฃเธฐเธเธ Ecosystem",
     slug: "local-business",
   },
   {
     name: "Sponsor Network",
     description:
-      "สร้างพื้นที่สำหรับผู้สนับสนุนที่ต้องการเติบโตไปพร้อมนักวิ่งไทย",
+      "เธชเธฃเนเธฒเธเธเธทเนเธเธ—เธตเนเธชเธณเธซเธฃเธฑเธเธเธนเนเธชเธเธฑเธเธชเธเธธเธเธ—เธตเนเธ•เนเธญเธเธเธฒเธฃเน€เธ•เธดเธเนเธ•เนเธเธเธฃเนเธญเธกเธเธฑเธเธงเธดเนเธเนเธ—เธข",
     slug: "sponsor-network",
   },
 ];
@@ -38,7 +38,7 @@ export default function PartnerSection() {
           </h2>
 
           <p className="mt-3 text-gray-600">
-            เชื่อมโยงพันธมิตรเพื่อสร้างระบบนิเวศนักวิ่งประเทศไทย
+            เน€เธเธทเนเธญเธกเนเธขเธเธเธฑเธเธเธกเธดเธ•เธฃเน€เธเธทเนเธญเธชเธฃเนเธฒเธเธฃเธฐเธเธเธเธดเน€เธงเธจเธเธฑเธเธงเธดเนเธเธเธฃเธฐเน€เธ—เธจเนเธ—เธข
           </p>
 
         </div>
@@ -64,11 +64,11 @@ export default function PartnerSection() {
               <div className="mt-6 flex gap-3">
 
                 <span className="flex-1 rounded-full border border-blue-600 px-6 py-3 text-center text-blue-600 font-semibold hover:bg-blue-600 hover:text-white transition">
-                  เข้าร่วมพันธมิตร
+                  เน€เธเนเธฒเธฃเนเธงเธกเธเธฑเธเธเธกเธดเธ•เธฃ
                 </span>
 
                 <span className="flex-1 rounded-full bg-gray-100 px-6 py-3 text-center text-gray-700 font-semibold hover:bg-gray-200 transition">
-                  ดูรายละเอียด
+                  เธ”เธนเธฃเธฒเธขเธฅเธฐเน€เธญเธตเธขเธ”
                 </span>
 
               </div>

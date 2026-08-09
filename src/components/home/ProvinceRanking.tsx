@@ -1,4 +1,4 @@
-// FILE: src/components/home/ProvinceRanking.tsx
+﻿// FILE: src/components/home/ProvinceRanking.tsx
 
 "use client";
 
@@ -7,21 +7,21 @@ import Link from "next/link";
 const provinces = [
   {
     rank: 1,
-    name: "เชียงใหม่",
+    name: "เน€เธเธตเธขเธเนเธซเธกเน",
     runners: "1,250",
     distance: "12,500 km",
     slug: "chiang-mai",
   },
   {
     rank: 2,
-    name: "น่าน",
+    name: "เธเนเธฒเธ",
     runners: "980",
     distance: "9,800 km",
     slug: "nan",
   },
   {
     rank: 3,
-    name: "กรุงเทพมหานคร",
+    name: "เธเธฃเธธเธเน€เธ—เธเธกเธซเธฒเธเธเธฃ",
     runners: "850",
     distance: "8,500 km",
     slug: "bangkok",
@@ -41,7 +41,7 @@ export default function ProvinceRanking() {
           </h2>
 
           <p className="mt-3 text-gray-600">
-            อันดับจังหวัดจากกิจกรรมการวิ่งทั่วประเทศไทย
+            เธญเธฑเธเธ”เธฑเธเธเธฑเธเธซเธงเธฑเธ”เธเธฒเธเธเธดเธเธเธฃเธฃเธกเธเธฒเธฃเธงเธดเนเธเธ—เธฑเนเธงเธเธฃเธฐเน€เธ—เธจเนเธ—เธข
           </p>
 
         </div>
@@ -53,19 +53,19 @@ export default function ProvinceRanking() {
           <div className="grid grid-cols-4 gap-4 px-6 py-4 bg-gray-100 font-semibold text-gray-700">
 
             <div>
-              อันดับ
+              เธญเธฑเธเธ”เธฑเธ
             </div>
 
             <div>
-              จังหวัด
+              เธเธฑเธเธซเธงเธฑเธ”
             </div>
 
             <div>
-              นักวิ่ง
+              เธเธฑเธเธงเธดเนเธ
             </div>
 
             <div>
-              ระยะทาง
+              เธฃเธฐเธขเธฐเธ—เธฒเธ
             </div>
 
           </div>

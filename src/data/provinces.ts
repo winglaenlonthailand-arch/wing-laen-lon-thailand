@@ -1,4 +1,4 @@
-// FILE: src/data/provinces.ts
+﻿// FILE: src/data/provinces.ts
 
 export interface ProvinceMember {
   id: string;
@@ -27,8 +27,8 @@ export const provinces: Province[] = [
   {
     id: "001",
     slug: "nan",
-    name: "น่าน",
-    region: "ภาคเหนือ",
+    name: "เธเนเธฒเธ",
+    region: "เธ เธฒเธเน€เธซเธเธทเธญ",
 
     runnerCount: 0,
     eventCount: 0,
@@ -42,8 +42,8 @@ export const provinces: Province[] = [
   {
     id: "002",
     slug: "chiang-mai",
-    name: "เชียงใหม่",
-    region: "ภาคเหนือ",
+    name: "เน€เธเธตเธขเธเนเธซเธกเน",
+    region: "เธ เธฒเธเน€เธซเธเธทเธญ",
 
     runnerCount: 0,
     eventCount: 0,
@@ -57,8 +57,8 @@ export const provinces: Province[] = [
   {
     id: "003",
     slug: "bangkok",
-    name: "กรุงเทพมหานคร",
-    region: "ภาคกลาง",
+    name: "เธเธฃเธธเธเน€เธ—เธเธกเธซเธฒเธเธเธฃ",
+    region: "เธ เธฒเธเธเธฅเธฒเธ",
 
     runnerCount: 0,
     eventCount: 0,

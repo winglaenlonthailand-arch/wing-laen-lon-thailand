@@ -1,21 +1,21 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 
 const statistics = [
   {
     value: "77",
-    label: "จังหวัดเข้าร่วม",
+    label: "เธเธฑเธเธซเธงเธฑเธ”เน€เธเนเธฒเธฃเนเธงเธก",
     href: "/province",
   },
   {
     value: "1,000+",
-    label: "นักวิ่งในระบบ",
+    label: "เธเธฑเธเธงเธดเนเธเนเธเธฃเธฐเธเธ",
     href: "/runner",
   },
   {
     value: "100+",
-    label: "กิจกรรมวิ่ง",
+    label: "เธเธดเธเธเธฃเธฃเธกเธงเธดเนเธ",
     href: "/events",
   },
   {

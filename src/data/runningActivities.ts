@@ -1,4 +1,4 @@
-import { RunningActivity } from "@/types/runningActivity";
+﻿import { RunningActivity } from "@/types/runningActivity";
 
 
 export const runningActivities: RunningActivity[] = [

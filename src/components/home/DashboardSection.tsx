@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 
@@ -23,28 +23,28 @@ export default function DashboardSection() {
 
   const dashboardData = [
     {
-      icon: "🏃",
+      icon: "๐",
       value: runnerCount,
       title: "Total Runners",
-      description: "จำนวนนักวิ่งในระบบ",
+      description: "เธเธณเธเธงเธเธเธฑเธเธงเธดเนเธเนเธเธฃเธฐเธเธ",
     },
     {
-      icon: "🏅",
+      icon: "๐…",
       value: eventCount,
       title: "Running Activities",
-      description: "กิจกรรมวิ่งทั่วประเทศ",
+      description: "เธเธดเธเธเธฃเธฃเธกเธงเธดเนเธเธ—เธฑเนเธงเธเธฃเธฐเน€เธ—เธจ",
     },
     {
-      icon: "🗺️",
+      icon: "๐—บ๏ธ",
       value: provinceCount,
       title: "Active Provinces",
-      description: "จังหวัดตัวอย่างในระบบ",
+      description: "เธเธฑเธเธซเธงเธฑเธ”เธ•เธฑเธงเธญเธขเนเธฒเธเนเธเธฃเธฐเธเธ",
     },
     {
-      icon: "🤖",
+      icon: "๐ค–",
       value: "READY",
       title: "AI Engine",
-      description: "พร้อมเชื่อม AI Platform",
+      description: "เธเธฃเนเธญเธกเน€เธเธทเนเธญเธก AI Platform",
     },
   ];
 

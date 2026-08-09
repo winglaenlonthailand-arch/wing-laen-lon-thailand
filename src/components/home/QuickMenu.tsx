@@ -1,43 +1,43 @@
-import Card from "@/components/ui/Card";
+﻿import Card from "@/components/ui/Card";
 
 const menus = [
   {
-    icon: "🏃",
+    icon: "๐",
     title: "Running",
     description: "Running Events & Activities",
   },
   {
-    icon: "🪪",
+    icon: "๐ชช",
     title: "Runner Passport",
     description: "National Runner Identity",
   },
   {
-    icon: "📊",
+    icon: "๐“",
     title: "Dashboard",
     description: "National Running Dashboard",
   },
   {
-    icon: "🤖",
+    icon: "๐ค–",
     title: "AI Platform",
     description: "AI Assistant Platform",
   },
   {
-    icon: "🌱",
+    icon: "๐ฑ",
     title: "Environment",
     description: "Carbon & Environment",
   },
   {
-    icon: "☕",
+    icon: "โ•",
     title: "Coffee",
     description: "Coffee Community",
   },
   {
-    icon: "🏘️",
+    icon: "๐๏ธ",
     title: "Community",
     description: "Community Network",
   },
   {
-    icon: "📁",
+    icon: "๐“",
     title: "Projects",
     description: "Project Management",
   },

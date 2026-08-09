@@ -1,4 +1,4 @@
-export type ActivityType =
+﻿export type ActivityType =
   | "Training"
   | "Event"
   | "Marathon"

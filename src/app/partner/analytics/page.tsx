@@ -1,4 +1,4 @@
-import { partnerAnalytics } from "@/data/partnerAnalytics";
+﻿import { partnerAnalytics } from "@/data/partnerAnalytics";
 
 
 export default function PartnerAnalyticsPage() {
@@ -19,7 +19,7 @@ export default function PartnerAnalyticsPage() {
 
         <p className="mt-4 text-gray-600">
 
-          ระบบวิเคราะห์ประสิทธิภาพ Partner Campaign
+          เธฃเธฐเธเธเธงเธดเน€เธเธฃเธฒเธฐเธซเนเธเธฃเธฐเธชเธดเธ—เธเธดเธ เธฒเธ Partner Campaign
 
         </p>
 

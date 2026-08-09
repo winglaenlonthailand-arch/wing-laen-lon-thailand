@@ -1,4 +1,4 @@
-// FILE: src/components/home/AIPlatformSection.tsx
+﻿// FILE: src/components/home/AIPlatformSection.tsx
 
 "use client";
 
@@ -8,19 +8,19 @@ const aiFeatures = [
   {
     title: "AI Running Assistant",
     description:
-      "ผู้ช่วย AI วิเคราะห์ข้อมูลการวิ่ง แนะนำการฝึกซ้อม และช่วยวางแผนพัฒนานักวิ่ง",
+      "เธเธนเนเธเนเธงเธข AI เธงเธดเน€เธเธฃเธฒเธฐเธซเนเธเนเธญเธกเธนเธฅเธเธฒเธฃเธงเธดเนเธ เนเธเธฐเธเธณเธเธฒเธฃเธเธถเธเธเนเธญเธก เนเธฅเธฐเธเนเธงเธขเธงเธฒเธเนเธเธเธเธฑเธ’เธเธฒเธเธฑเธเธงเธดเนเธ",
     slug: "assistant",
   },
   {
     title: "Running Intelligence",
     description:
-      "ระบบประมวลผลข้อมูลนักวิ่ง กิจกรรม ระยะทาง และสถิติ เพื่อสร้างข้อมูลเชิงลึก",
+      "เธฃเธฐเธเธเธเธฃเธฐเธกเธงเธฅเธเธฅเธเนเธญเธกเธนเธฅเธเธฑเธเธงเธดเนเธ เธเธดเธเธเธฃเธฃเธก เธฃเธฐเธขเธฐเธ—เธฒเธ เนเธฅเธฐเธชเธ–เธดเธ•เธด เน€เธเธทเนเธญเธชเธฃเนเธฒเธเธเนเธญเธกเธนเธฅเน€เธเธดเธเธฅเธถเธ",
     slug: "intelligence",
   },
   {
     title: "National Running Database",
     description:
-      "ฐานข้อมูลนักวิ่งระดับประเทศ เพื่อเชื่อมโยงชุมชน จังหวัด และกิจกรรมต่าง ๆ",
+      "เธเธฒเธเธเนเธญเธกเธนเธฅเธเธฑเธเธงเธดเนเธเธฃเธฐเธ”เธฑเธเธเธฃเธฐเน€เธ—เธจ เน€เธเธทเนเธญเน€เธเธทเนเธญเธกเนเธขเธเธเธธเธกเธเธ เธเธฑเธเธซเธงเธฑเธ” เนเธฅเธฐเธเธดเธเธเธฃเธฃเธกเธ•เนเธฒเธ เน",
     slug: "database",
   },
 ];
@@ -38,7 +38,7 @@ export default function AIPlatformSection() {
           </h2>
 
           <p className="mt-3 text-gray-300">
-            ระบบ AI สำหรับสร้างอนาคตการวิ่งของประเทศไทย
+            เธฃเธฐเธเธ AI เธชเธณเธซเธฃเธฑเธเธชเธฃเนเธฒเธเธญเธเธฒเธเธ•เธเธฒเธฃเธงเธดเนเธเธเธญเธเธเธฃเธฐเน€เธ—เธจเนเธ—เธข
           </p>
 
         </div>
@@ -62,7 +62,7 @@ export default function AIPlatformSection() {
               </p>
 
               <div className="mt-6 text-blue-300 font-semibold">
-                เปิดระบบ →
+                เน€เธเธดเธ”เธฃเธฐเธเธ โ’
               </div>
 
             </Link>
@@ -86,7 +86,7 @@ export default function AIPlatformSection() {
 
               <p className="mt-3 text-gray-300">
                 Ready for Runner Passport,
-                National Ranking และ Digital Running Ecosystem
+                National Ranking เนเธฅเธฐ Digital Running Ecosystem
               </p>
 
             </div>

@@ -1,4 +1,4 @@
-import { MarketplaceProduct } from "@/types/marketplace";
+﻿import { MarketplaceProduct } from "@/types/marketplace";
 
 
 export const marketplaceProducts: MarketplaceProduct[] = [
@@ -16,7 +16,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
       "Shoes",
 
     description:
-      "รองเท้าวิ่งสำหรับนักวิ่งทุกระดับ พร้อมเทคโนโลยีรองรับแรงกระแทก",
+      "เธฃเธญเธเน€เธ—เนเธฒเธงเธดเนเธเธชเธณเธซเธฃเธฑเธเธเธฑเธเธงเธดเนเธเธ—เธธเธเธฃเธฐเธ”เธฑเธ เธเธฃเนเธญเธกเน€เธ—เธเนเธเนเธฅเธขเธตเธฃเธญเธเธฃเธฑเธเนเธฃเธเธเธฃเธฐเนเธ—เธ",
 
     imageUrl:
       "/marketplace/runner-shoes.png",
@@ -42,7 +42,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
       "Nutrition",
 
     description:
-      "เครื่องดื่มพลังงานสำหรับนักวิ่งและผู้รักสุขภาพ",
+      "เน€เธเธฃเธทเนเธญเธเธ”เธทเนเธกเธเธฅเธฑเธเธเธฒเธเธชเธณเธซเธฃเธฑเธเธเธฑเธเธงเธดเนเธเนเธฅเธฐเธเธนเนเธฃเธฑเธเธชเธธเธเธ เธฒเธ",
 
     imageUrl:
       "/marketplace/energy-drink.png",
@@ -68,7 +68,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
       "Equipment",
 
     description:
-      "อุปกรณ์ฝึกซ้อมสำหรับพัฒนาศักยภาพนักวิ่ง",
+      "เธญเธธเธเธเธฃเธ“เนเธเธถเธเธเนเธญเธกเธชเธณเธซเธฃเธฑเธเธเธฑเธ’เธเธฒเธจเธฑเธเธขเธ เธฒเธเธเธฑเธเธงเธดเนเธ",
 
     imageUrl:
       "/marketplace/equipment.png",

@@ -1,4 +1,4 @@
-// FILE: src/services/provinceService.ts
+﻿// FILE: src/services/provinceService.ts
 
 import { provinces } from "@/data/provinces";
 import { runnerProfiles } from "@/data/runnerProfiles";

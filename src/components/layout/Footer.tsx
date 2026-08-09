@@ -1,4 +1,4 @@
-export default function Footer() {
+﻿export default function Footer() {
   return (
     <footer className="bg-slate-900 text-white py-12">
       <div className="mx-auto max-w-7xl px-6">
@@ -52,7 +52,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 border-t border-gray-700 pt-6 text-sm text-gray-400">
-          © 2026 WING LAEN LON THAILAND
+          ยฉ 2026 WING LAEN LON THAILAND
         </div>
 
       </div>

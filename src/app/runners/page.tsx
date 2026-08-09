@@ -1,4 +1,4 @@
-// FILE: src/app/runners/page.tsx
+﻿// FILE: src/app/runners/page.tsx
 
 import RunnerCard from "@/components/RunnerCard";
 import { PrismaClient } from "@/generated/prisma/client";
@@ -28,7 +28,7 @@ export default async function RunnersPage() {
         </h1>
 
         <p className="mb-6 text-gray-600">
-          ระบบฐานข้อมูลนักวิ่ง WING LAEN LON THAILAND
+          เธฃเธฐเธเธเธเธฒเธเธเนเธญเธกเธนเธฅเธเธฑเธเธงเธดเนเธ WING LAEN LON THAILAND
         </p>
 
         <div className="grid gap-4">

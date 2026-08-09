@@ -1,4 +1,4 @@
-type ChallengeCardProps = {
+﻿type ChallengeCardProps = {
   name: string;
   province: string;
   level: string;

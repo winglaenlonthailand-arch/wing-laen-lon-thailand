@@ -1,4 +1,4 @@
-// FILE: src/app/events/page.tsx
+﻿// FILE: src/app/events/page.tsx
 
 import EventCard from "@/components/EventCard";
 
@@ -25,7 +25,7 @@ export default function EventsPage() {
 
 
         <p className="mb-6 text-gray-600">
-          ระบบกิจกรรมวิ่ง WING LAEN LON THAILAND
+          เธฃเธฐเธเธเธเธดเธเธเธฃเธฃเธกเธงเธดเนเธ WING LAEN LON THAILAND
         </p>
 
 

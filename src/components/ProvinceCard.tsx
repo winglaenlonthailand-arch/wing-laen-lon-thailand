@@ -1,4 +1,4 @@
-type ProvinceCardProps = {
+﻿type ProvinceCardProps = {
   rank: number;
   code: string;
   name: string;

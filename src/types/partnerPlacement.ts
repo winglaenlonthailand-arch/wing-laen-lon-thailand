@@ -1,4 +1,4 @@
-export type PlacementPosition =
+﻿export type PlacementPosition =
   | "Homepage Top"
   | "Homepage Middle"
   | "Homepage Bottom"

@@ -1,4 +1,4 @@
-import { PartnerCampaign } from "@/types/partnerCampaign";
+﻿import { PartnerCampaign } from "@/types/partnerCampaign";
 
 export const partnerCampaigns: PartnerCampaign[] = [
   {
@@ -21,7 +21,7 @@ export const partnerCampaigns: PartnerCampaign[] = [
     imageUrl: "/partners/runner-pro-shoes.png",
 
     description:
-      "รองเท้าวิ่งสำหรับนักกีฬาและนักวิ่งทั่วประเทศไทย",
+      "เธฃเธญเธเน€เธ—เนเธฒเธงเธดเนเธเธชเธณเธซเธฃเธฑเธเธเธฑเธเธเธตเธฌเธฒเนเธฅเธฐเธเธฑเธเธงเธดเนเธเธ—เธฑเนเธงเธเธฃเธฐเน€เธ—เธจเนเธ—เธข",
   },
 
 
@@ -45,7 +45,7 @@ export const partnerCampaigns: PartnerCampaign[] = [
     imageUrl: "/partners/healthy-drink.png",
 
     description:
-      "เครื่องดื่มสุขภาพสำหรับเติมพลังนักวิ่ง",
+      "เน€เธเธฃเธทเนเธญเธเธ”เธทเนเธกเธชเธธเธเธ เธฒเธเธชเธณเธซเธฃเธฑเธเน€เธ•เธดเธกเธเธฅเธฑเธเธเธฑเธเธงเธดเนเธ",
   },
 
 
@@ -69,6 +69,6 @@ export const partnerCampaigns: PartnerCampaign[] = [
     imageUrl: "/partners/community.png",
 
     description:
-      "พันธมิตรชุมชนและกิจกรรมการวิ่งระดับจังหวัด",
+      "เธเธฑเธเธเธกเธดเธ•เธฃเธเธธเธกเธเธเนเธฅเธฐเธเธดเธเธเธฃเธฃเธกเธเธฒเธฃเธงเธดเนเธเธฃเธฐเธ”เธฑเธเธเธฑเธเธซเธงเธฑเธ”",
   },
 ];

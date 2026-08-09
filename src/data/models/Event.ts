@@ -1,4 +1,4 @@
-export interface RunningEvent {
+﻿export interface RunningEvent {
 
   id: string;
 

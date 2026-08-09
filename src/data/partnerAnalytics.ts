@@ -1,4 +1,4 @@
-import { PartnerAnalytics } from "@/types/partnerAnalytics";
+﻿import { PartnerAnalytics } from "@/types/partnerAnalytics";
 
 
 export const partnerAnalytics: PartnerAnalytics[] = [

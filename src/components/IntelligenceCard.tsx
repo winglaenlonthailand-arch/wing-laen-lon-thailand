@@ -1,4 +1,4 @@
-type IntelligenceCardProps = {
+﻿type IntelligenceCardProps = {
   title: string;
   value: string;
 };

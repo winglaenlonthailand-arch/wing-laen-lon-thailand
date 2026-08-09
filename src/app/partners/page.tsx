@@ -1,4 +1,4 @@
-export default function PartnersPage() {
+﻿export default function PartnersPage() {
   const partners = [
     {
       name: "Na Pupiang Coffee",

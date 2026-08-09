@@ -1,4 +1,4 @@
-export type PartnerCategory =
+﻿export type PartnerCategory =
   | "Sports"
   | "Health"
   | "Community"

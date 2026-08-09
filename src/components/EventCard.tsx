@@ -1,4 +1,4 @@
-type EventCardProps = {
+﻿type EventCardProps = {
   name: string;
   province: string;
   date: string;

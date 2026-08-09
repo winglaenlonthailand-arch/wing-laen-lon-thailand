@@ -1,4 +1,4 @@
-type CardProps = {
+﻿type CardProps = {
   children: React.ReactNode;
 };
 

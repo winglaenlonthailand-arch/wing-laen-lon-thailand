@@ -1,4 +1,4 @@
-export interface PartnerAnalytics {
+﻿export interface PartnerAnalytics {
 
   id: number;
 

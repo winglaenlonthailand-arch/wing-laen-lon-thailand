@@ -1,9 +1,9 @@
-export const runners = [
+﻿export const runners = [
   {
     id: "CNX-50000-R000001",
     name: "Runner Demo 01",
 
-    province: "เชียงใหม่",
+    province: "เน€เธเธตเธขเธเนเธซเธกเน",
     provinceCode: "CNX",
     postcode: "50000",
 
@@ -28,7 +28,7 @@ export const runners = [
     id: "NAN-55000-R000001",
     name: "Runner Demo 02",
 
-    province: "น่าน",
+    province: "เธเนเธฒเธ",
     provinceCode: "NAN",
     postcode: "55000",
 
@@ -53,7 +53,7 @@ export const runners = [
     id: "BKK-10200-R000001",
     name: "Runner Demo 03",
 
-    province: "กรุงเทพมหานคร",
+    province: "เธเธฃเธธเธเน€เธ—เธเธกเธซเธฒเธเธเธฃ",
     provinceCode: "BKK",
     postcode: "10200",
 
@@ -79,7 +79,7 @@ export const events = [
   {
     id: "E001",
     name: "Chiang Mai Marathon",
-    province: "เชียงใหม่",
+    province: "เน€เธเธตเธขเธเนเธซเธกเน",
     provinceCode: "CNX",
     date: "2026-11-15",
     distance: "Marathon",
@@ -89,7 +89,7 @@ export const events = [
   {
     id: "E002",
     name: "Nan Running Festival",
-    province: "น่าน",
+    province: "เธเนเธฒเธ",
     provinceCode: "NAN",
     date: "2026-12-05",
     distance: "Half Marathon",
@@ -101,8 +101,8 @@ export const provinces = [
   {
     id: "P001",
     code: "CNX",
-    name: "เชียงใหม่",
-    region: "เหนือ",
+    name: "เน€เธเธตเธขเธเนเธซเธกเน",
+    region: "เน€เธซเธเธทเธญ",
     postcode: "50000",
     runnerCount: 1200,
     eventCount: 35,
@@ -112,8 +112,8 @@ export const provinces = [
   {
     id: "P002",
     code: "NAN",
-    name: "น่าน",
-    region: "เหนือ",
+    name: "เธเนเธฒเธ",
+    region: "เน€เธซเธเธทเธญ",
     postcode: "55000",
     runnerCount: 350,
     eventCount: 12,
@@ -123,8 +123,8 @@ export const provinces = [
   {
     id: "P003",
     code: "BKK",
-    name: "กรุงเทพมหานคร",
-    region: "กลาง",
+    name: "เธเธฃเธธเธเน€เธ—เธเธกเธซเธฒเธเธเธฃ",
+    region: "เธเธฅเธฒเธ",
     postcode: "10200",
     runnerCount: 5000,
     eventCount: 120,

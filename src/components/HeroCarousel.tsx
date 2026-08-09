@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -132,7 +132,7 @@ export default function HeroCarousel() {
           </p>
 
           <div className="mt-2 animate-bounce text-2xl group-hover:text-blue-300 transition">
-            ↓
+            โ“
           </div>
 
         </Link>

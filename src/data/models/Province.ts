@@ -1,4 +1,4 @@
-export interface Province {
+﻿export interface Province {
 
   id: string;
 

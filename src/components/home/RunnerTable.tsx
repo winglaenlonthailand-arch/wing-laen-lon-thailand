@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 
@@ -31,7 +31,7 @@ export default function RunnerTable() {
       </h2>
 
       <p className="mb-8 text-gray-600">
-        ข้อมูลนักวิ่งตัวอย่างจาก API
+        เธเนเธญเธกเธนเธฅเธเธฑเธเธงเธดเนเธเธ•เธฑเธงเธญเธขเนเธฒเธเธเธฒเธ API
       </p>
 
       <div className="overflow-hidden rounded-2xl border shadow">

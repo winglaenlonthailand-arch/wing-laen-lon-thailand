@@ -1,4 +1,4 @@
-import DashboardCard from "@/components/DashboardCard";
+﻿import DashboardCard from "@/components/DashboardCard";
 import IntelligenceCard from "@/components/IntelligenceCard";
 
 async function getDashboard() {

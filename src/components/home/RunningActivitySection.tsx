@@ -1,4 +1,4 @@
-import { runningActivities } from "@/data/runningActivities";
+﻿import { runningActivities } from "@/data/runningActivities";
 
 
 export default function RunningActivitySection() {
@@ -19,7 +19,7 @@ export default function RunningActivitySection() {
 
         <p className="mt-4 text-center text-gray-600">
 
-          ประวัติการวิ่งและกิจกรรมของ Runner
+          เธเธฃเธฐเธงเธฑเธ•เธดเธเธฒเธฃเธงเธดเนเธเนเธฅเธฐเธเธดเธเธเธฃเธฃเธกเธเธญเธ Runner
 
         </p>
 

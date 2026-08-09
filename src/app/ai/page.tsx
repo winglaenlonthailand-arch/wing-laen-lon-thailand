@@ -1,4 +1,4 @@
-export default function AIPage() {
+﻿export default function AIPage() {
   return (
     <main className="mx-auto max-w-7xl px-6 py-16">
       <h1 className="text-4xl font-bold">
@@ -6,7 +6,7 @@ export default function AIPage() {
       </h1>
 
       <p className="mt-6 text-gray-600">
-        AI Assistant สำหรับนักวิ่งและองค์กร
+        AI Assistant เธชเธณเธซเธฃเธฑเธเธเธฑเธเธงเธดเนเธเนเธฅเธฐเธญเธเธเนเธเธฃ
       </p>
     </main>
   );

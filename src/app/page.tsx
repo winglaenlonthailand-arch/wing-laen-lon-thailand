@@ -1,4 +1,4 @@
-import HeroCarousel from "@/components/HeroCarousel";
+﻿import HeroCarousel from "@/components/HeroCarousel";
 
 import Statistics from "@/components/home/Statistics";
 import PassportPreview from "@/components/home/PassportPreview";

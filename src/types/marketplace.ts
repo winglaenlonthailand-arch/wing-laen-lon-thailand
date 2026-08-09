@@ -1,4 +1,4 @@
-export type MarketplaceCategory =
+﻿export type MarketplaceCategory =
   | "Shoes"
   | "Sportswear"
   | "Equipment"

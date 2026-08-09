@@ -1,4 +1,4 @@
-// FILE: src/components/home/NewsSection.tsx
+﻿// FILE: src/components/home/NewsSection.tsx
 
 "use client";
 
@@ -6,25 +6,25 @@ import Link from "next/link";
 
 const newsItems = [
   {
-    title: "WING LAEN LON THAILAND เปิดระบบ AI Running Platform",
+    title: "WING LAEN LON THAILAND เน€เธเธดเธ”เธฃเธฐเธเธ AI Running Platform",
     date: "2026",
     slug: "ai-running-platform-launch",
     description:
-      "แพลตฟอร์มการวิ่งแห่งประเทศไทย เชื่อมต่อนักวิ่ง ข้อมูล และเทคโนโลยี AI",
+      "เนเธเธฅเธ•เธเธญเธฃเนเธกเธเธฒเธฃเธงเธดเนเธเนเธซเนเธเธเธฃเธฐเน€เธ—เธจเนเธ—เธข เน€เธเธทเนเธญเธกเธ•เนเธญเธเธฑเธเธงเธดเนเธ เธเนเธญเธกเธนเธฅ เนเธฅเธฐเน€เธ—เธเนเธเนเธฅเธขเธต AI",
   },
   {
-    title: "Runner Passport ระบบตัวตนนักวิ่งดิจิทัล",
+    title: "Runner Passport เธฃเธฐเธเธเธ•เธฑเธงเธ•เธเธเธฑเธเธงเธดเนเธเธ”เธดเธเธดเธ—เธฑเธฅ",
     date: "2026",
     slug: "runner-passport",
     description:
-      "บันทึกประวัติการวิ่ง สถิติ และความสำเร็จของนักวิ่งแต่ละคน",
+      "เธเธฑเธเธ—เธถเธเธเธฃเธฐเธงเธฑเธ•เธดเธเธฒเธฃเธงเธดเนเธ เธชเธ–เธดเธ•เธด เนเธฅเธฐเธเธงเธฒเธกเธชเธณเน€เธฃเนเธเธเธญเธเธเธฑเธเธงเธดเนเธเนเธ•เนเธฅเธฐเธเธ",
   },
   {
-    title: "สร้างเครือข่ายนักวิ่งทั่วประเทศ",
+    title: "เธชเธฃเนเธฒเธเน€เธเธฃเธทเธญเธเนเธฒเธขเธเธฑเธเธงเธดเนเธเธ—เธฑเนเธงเธเธฃเธฐเน€เธ—เธจ",
     date: "2026",
     slug: "national-running-network",
     description:
-      "เชื่อมโยงจังหวัด ชุมชน ผู้สนับสนุน และกิจกรรมการวิ่งในประเทศไทย",
+      "เน€เธเธทเนเธญเธกเนเธขเธเธเธฑเธเธซเธงเธฑเธ” เธเธธเธกเธเธ เธเธนเนเธชเธเธฑเธเธชเธเธธเธ เนเธฅเธฐเธเธดเธเธเธฃเธฃเธกเธเธฒเธฃเธงเธดเนเธเนเธเธเธฃเธฐเน€เธ—เธจเนเธ—เธข",
   },
 ];
 
@@ -41,7 +41,7 @@ export default function NewsSection() {
           </h2>
 
           <p className="mt-3 text-gray-600">
-            ข่าวสารและความเคลื่อนไหวจาก WING LAEN LON THAILAND
+            เธเนเธฒเธงเธชเธฒเธฃเนเธฅเธฐเธเธงเธฒเธกเน€เธเธฅเธทเนเธญเธเนเธซเธงเธเธฒเธ WING LAEN LON THAILAND
           </p>
 
         </div>
@@ -75,7 +75,7 @@ export default function NewsSection() {
                 </span>
 
                 <span className="text-blue-600 font-semibold">
-                  อ่านเพิ่มเติม →
+                  เธญเนเธฒเธเน€เธเธดเนเธกเน€เธ•เธดเธก โ’
                 </span>
 
               </div>
@@ -92,7 +92,7 @@ export default function NewsSection() {
             href="/news"
             className="inline-flex rounded-full bg-blue-600 px-8 py-3 text-white font-semibold hover:bg-blue-700 transition"
           >
-            ดูข่าวทั้งหมด
+            เธ”เธนเธเนเธฒเธงเธ—เธฑเนเธเธซเธกเธ”
           </Link>
 
         </div>

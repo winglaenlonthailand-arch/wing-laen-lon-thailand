@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 import { marketplaceProducts } from "@/data/marketplaceProducts";
 
@@ -20,7 +20,7 @@ export default function MarketplaceSection() {
           </h2>
 
           <p className="mt-4 text-gray-600">
-            สินค้าและบริการสำหรับนักวิ่ง จาก Partner ทั่วประเทศไทย
+            เธชเธดเธเธเนเธฒเนเธฅเธฐเธเธฃเธดเธเธฒเธฃเธชเธณเธซเธฃเธฑเธเธเธฑเธเธงเธดเนเธ เธเธฒเธ Partner เธ—เธฑเนเธงเธเธฃเธฐเน€เธ—เธจเนเธ—เธข
           </p>
 
         </div>
@@ -62,7 +62,7 @@ export default function MarketplaceSection() {
                 </span>
 
                 <span className="text-blue-600 font-semibold">
-                  ดูรายละเอียด →
+                  เธ”เธนเธฃเธฒเธขเธฅเธฐเน€เธญเธตเธขเธ” โ’
                 </span>
 
               </div>
@@ -70,7 +70,7 @@ export default function MarketplaceSection() {
               <div className="mt-6 grid grid-cols-2 gap-3">
 
                 <span className="rounded-full bg-blue-600 px-4 py-3 text-center text-white font-semibold">
-                  สั่งซื้อสินค้า
+                  เธชเธฑเนเธเธเธทเนเธญเธชเธดเธเธเนเธฒ
                 </span>
 
                 <span className="rounded-full border border-blue-600 px-4 py-3 text-center text-blue-600 font-semibold">

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { partnerCampaigns } from "@/data/partnerCampaigns";
 
@@ -15,8 +15,8 @@ export default function PartnerCampaignPage() {
           </h1>
 
           <p className="mt-3 text-gray-600">
-            ระบบจัดการพื้นที่ประชาสัมพันธ์สำหรับ Partner
-            ของ WING LAEN LON THAILAND
+            เธฃเธฐเธเธเธเธฑเธ”เธเธฒเธฃเธเธทเนเธเธ—เธตเนเธเธฃเธฐเธเธฒเธชเธฑเธกเธเธฑเธเธเนเธชเธณเธซเธฃเธฑเธ Partner
+            เธเธญเธ WING LAEN LON THAILAND
           </p>
 
         </div>

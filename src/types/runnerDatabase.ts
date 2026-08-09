@@ -1,4 +1,4 @@
-export type RunnerAccountStatus =
+﻿export type RunnerAccountStatus =
   | "Active"
   | "Inactive"
   | "Pending";

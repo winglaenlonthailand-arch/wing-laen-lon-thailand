@@ -1,4 +1,4 @@
-type PartnerCardProps = {
+﻿type PartnerCardProps = {
   name: string;
   type: string;
   location: string;
