@@ -68,7 +68,7 @@ export default function PartnerSection() {
                 </span>
 
                 <span className="flex-1 rounded-full bg-gray-100 px-6 py-3 text-center text-gray-700 font-semibold hover:bg-gray-200 transition">
-                  ดูรายละเอียด”
+                  ดูรายละเอียด
                 </span>
 
               </div>

@@ -7,14 +7,14 @@ import Link from "next/link";
 const provinces = [
   {
     rank: 1,
-    name: "เชียงใหม่",
+    name: "เชียงใหม่",
     runners: "1,250",
     distance: "12,500 km",
     slug: "chiang-mai",
   },
   {
     rank: 2,
-    name: "เน่าน",
+    name: "น่าน",
     runners: "980",
     distance: "9,800 km",
     slug: "nan",
@@ -57,7 +57,7 @@ export default function ProvinceRanking() {
             </div>
 
             <div>
-              จังหวัด”
+              จังหวัด
             </div>
 
             <div>

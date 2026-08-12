@@ -79,7 +79,7 @@ export default function UpcomingEvents() {
               <div className="mt-6 flex gap-3">
 
                 <span className="flex-1 rounded-full bg-blue-600 px-6 py-3 text-center text-white font-semibold">
-                  ”ดูรายละเอียด”
+                  ดูรายละเอียด
                 </span>
 
                 <span className="flex-1 rounded-full border border-blue-600 px-6 py-3 text-center text-blue-600 font-semibold">

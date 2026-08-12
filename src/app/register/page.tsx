@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useMemo, useState } from "react";
 
@@ -14,6 +14,7 @@ export default function RegisterPage() {
     "Triathlon",
     "Football",
     "Basketball",
+    "Volleyball",
     "Badminton",
     "Fitness",
     "Other",
@@ -21,6 +22,11 @@ export default function RegisterPage() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [createdAthleteId, setCreatedAthleteId] = useState("");
 
   const [form, setForm] = useState({
     firstName: "",
@@ -82,7 +88,10 @@ export default function RegisterPage() {
     const target = e.target;
     const { name, value } = target;
 
-    if (target instanceof HTMLInputElement && target.type === "checkbox") {
+    if (
+      target instanceof HTMLInputElement &&
+      target.type === "checkbox"
+    ) {
       setForm((prev) => ({
         ...prev,
         [name]: target.checked,
@@ -106,6 +115,107 @@ export default function RegisterPage() {
     }));
   };
 
+  const handleSubmit = async () => {
+    setErrorMessage("");
+    setSuccessMessage("");
+    setCreatedAthleteId("");
+
+    if (!form.firstName.trim()) {
+      setErrorMessage("Please enter your first name.");
+      return;
+    }
+
+    if (!form.lastName.trim()) {
+      setErrorMessage("Please enter your last name.");
+      return;
+    }
+
+    if (!form.email.trim()) {
+      setErrorMessage("Please enter your email.");
+      return;
+    }
+
+    if (form.password.length < 8) {
+      setErrorMessage(
+        "Password must be at least 8 characters."
+      );
+      return;
+    }
+
+    if (form.password !== form.confirmPassword) {
+      setErrorMessage(
+        "Password and Confirm Password do not match."
+      );
+      return;
+    }
+
+    if (form.sports.length === 0) {
+      setErrorMessage(
+        "Please select at least one sport."
+      );
+      return;
+    }
+
+    if (!form.acceptTerms) {
+      setErrorMessage(
+        "Please accept the Athlete Passport Terms."
+      );
+      return;
+    }
+
+    setSubmitting(true);
+
+    try {
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: form.firstName,
+          lastName: form.lastName,
+          nickname: form.nickname,
+          email: form.email,
+          password: form.password,
+          sports: form.sports,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(
+          data.message || "Registration failed."
+        );
+      }
+
+      setSuccessMessage(
+        data.message ||
+          "Athlete Passport created successfully."
+      );
+
+      if (data.data?.athleteId) {
+        setCreatedAthleteId(data.data.athleteId);
+      }
+
+      setForm((prev) => ({
+        ...prev,
+        password: "",
+        confirmPassword: "",
+      }));
+    } catch (error) {
+      console.error("REGISTER CLIENT ERROR:", error);
+
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Registration failed. Please try again."
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <main className="min-h-screen bg-gray-50 py-10">
       <div className="mx-auto max-w-5xl px-4">
@@ -126,6 +236,26 @@ export default function RegisterPage() {
           >
             <div className="h-full w-1/3 bg-blue-600" />
           </div>
+
+          {errorMessage && (
+            <div className="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-red-700">
+              <strong>Registration Error</strong>
+              <p className="mt-1">{errorMessage}</p>
+            </div>
+          )}
+
+          {successMessage && (
+            <div className="mt-6 rounded-xl border border-green-200 bg-green-50 p-4 text-green-700">
+              <strong>Registration Successful</strong>
+              <p className="mt-1">{successMessage}</p>
+
+              {createdAthleteId && (
+                <p className="mt-2 font-semibold">
+                  Athlete ID: {createdAthleteId}
+                </p>
+              )}
+            </div>
+          )}
 
           <div className="mt-8 space-y-6">
             {/* 1. Personal Information */}
@@ -212,8 +342,10 @@ export default function RegisterPage() {
 
                 <button
                   type="button"
-                  onClick={() => setShowPassword((value) => !value)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2"
+                  onClick={() =>
+                    setShowPassword((value) => !value)
+                  }
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xl"
                   aria-label={
                     showPassword
                       ? "Hide password"
@@ -235,13 +367,18 @@ export default function RegisterPage() {
                 </div>
 
                 <p className="mt-1 text-sm text-gray-600">
-                  Password strength: {passwordStrength.label}
+                  Password strength:{" "}
+                  {passwordStrength.label}
                 </p>
               </div>
 
               <div className="relative mt-3">
                 <input
-                  type={showConfirmPassword ? "text" : "password"}
+                  type={
+                    showConfirmPassword
+                      ? "text"
+                      : "password"
+                  }
                   name="confirmPassword"
                   value={form.confirmPassword}
                   onChange={handleChange}
@@ -253,9 +390,11 @@ export default function RegisterPage() {
                 <button
                   type="button"
                   onClick={() =>
-                    setShowConfirmPassword((value) => !value)
+                    setShowConfirmPassword(
+                      (value) => !value
+                    )
                   }
-                  className="absolute right-3 top-1/2 -translate-y-1/2"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xl"
                   aria-label={
                     showConfirmPassword
                       ? "Hide confirm password"
@@ -322,7 +461,9 @@ export default function RegisterPage() {
                 4. Sports Profile
               </h2>
 
-              <p className="mt-3">Select Your Sports</p>
+              <p className="mt-3">
+                Select Your Sports
+              </p>
 
               <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3">
                 {sports.map((sport) => (
@@ -333,7 +474,9 @@ export default function RegisterPage() {
                     <input
                       type="checkbox"
                       checked={form.sports.includes(sport)}
-                      onChange={() => handleSportChange(sport)}
+                      onChange={() =>
+                        handleSportChange(sport)
+                      }
                     />
 
                     <span>{sport}</span>
@@ -355,11 +498,15 @@ export default function RegisterPage() {
                 className="mt-4 w-full rounded border p-3"
               >
                 <option value="">Level</option>
-                <option value="Beginner">Beginner</option>
+                <option value="Beginner">
+                  Beginner
+                </option>
                 <option value="Intermediate">
                   Intermediate
                 </option>
-                <option value="Advanced">Advanced</option>
+                <option value="Advanced">
+                  Advanced
+                </option>
                 <option value="Professional">
                   Professional
                 </option>
@@ -403,7 +550,9 @@ export default function RegisterPage() {
                   onChange={handleChange}
                 />
 
-                <span>Request Physical Smart Card</span>
+                <span>
+                  Request Physical Smart Card
+                </span>
               </label>
             </section>
 
@@ -421,7 +570,9 @@ export default function RegisterPage() {
                   onChange={handleChange}
                 />
 
-                <span>Accept Athlete Passport Terms</span>
+                <span>
+                  Accept Athlete Passport Terms
+                </span>
               </label>
 
               <label className="mt-3 flex cursor-pointer items-center gap-2">
@@ -432,7 +583,9 @@ export default function RegisterPage() {
                   onChange={handleChange}
                 />
 
-                <span>Allow Ranking Display</span>
+                <span>
+                  Allow Ranking Display
+                </span>
               </label>
             </section>
 
@@ -449,7 +602,7 @@ export default function RegisterPage() {
                   </p>
 
                   <p className="mt-1 font-semibold">
-                    THA-2026-000001
+                    Generated after registration
                   </p>
                 </div>
 
@@ -459,7 +612,7 @@ export default function RegisterPage() {
                   </p>
 
                   <p className="mt-1 font-semibold">
-                    AP-TH-260809-000001
+                    Generated after registration
                   </p>
                 </div>
 
@@ -490,18 +643,22 @@ export default function RegisterPage() {
                   </p>
 
                   <p className="mt-1 font-semibold">
-                    SC-100001
+                    Generated after registration
                   </p>
                 </div>
               </div>
             </section>
 
+            {/* Create Athlete Passport */}
             <button
               type="button"
-              onClick={() => console.log(form)}
-              className="w-full rounded-xl bg-blue-600 px-8 py-4 text-lg font-semibold text-white transition hover:bg-blue-700"
+              onClick={handleSubmit}
+              disabled={submitting}
+              className="w-full rounded-xl bg-blue-600 px-8 py-4 text-lg font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-400"
             >
-              Create Athlete Passport
+              {submitting
+                ? "Creating Athlete Passport..."
+                : "Create Athlete Passport"}
             </button>
           </div>
         </div>
@@ -509,6 +666,3 @@ export default function RegisterPage() {
     </main>
   );
 }
-
-
-
