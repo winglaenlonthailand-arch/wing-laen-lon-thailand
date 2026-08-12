@@ -7,21 +7,21 @@ import Link from "next/link";
 const events = [
   {
     title: "Nan Mountain Run",
-    location: "เธเธฑเธเธซเธงเธฑเธ”เธเนเธฒเธ",
+    location: "จังหวัดน่าน",
     date: "2026",
     distance: "10 KM",
     slug: "nan-mountain-run",
   },
   {
     title: "Chiang Mai Trail Challenge",
-    location: "เธเธฑเธเธซเธงเธฑเธ”เน€เธเธตเธขเธเนเธซเธกเน",
+    location: "จังหวัดเชียงใหม่",
     date: "2026",
     distance: "21 KM",
     slug: "chiang-mai-trail-challenge",
   },
   {
     title: "Thailand AI Running Event",
-    location: "เธเธฃเธฐเน€เธ—เธจเนเธ—เธข",
+    location: "ประเทศไทย",
     date: "2026",
     distance: "Virtual Run",
     slug: "thailand-ai-running-event",
@@ -41,7 +41,7 @@ export default function UpcomingEvents() {
           </h2>
 
           <p className="mt-3 text-gray-600">
-            เธฃเธงเธกเธเธดเธเธเธฃเธฃเธกเธงเธดเนเธเธ—เธตเนเน€เธเธทเนเธญเธกเธ•เนเธญเธเธฑเธ WING LAEN LON THAILAND
+            รวมกิจกรรมวิ่งที่เชื่อมต่อกับ WING LAEN LON THAILAND
           </p>
 
         </div>
@@ -63,15 +63,15 @@ export default function UpcomingEvents() {
               <div className="mt-4 space-y-2 text-gray-600">
 
                 <p>
-                  ๐“ {event.location}
+                  📍 {event.location}
                 </p>
 
                 <p>
-                  ๐“… {event.date}
+                  📅 {event.date}
                 </p>
 
                 <p>
-                  ๐ {event.distance}
+                  🏃 {event.distance}
                 </p>
 
               </div>
@@ -79,11 +79,11 @@ export default function UpcomingEvents() {
               <div className="mt-6 flex gap-3">
 
                 <span className="flex-1 rounded-full bg-blue-600 px-6 py-3 text-center text-white font-semibold">
-                  เธ”เธนเธฃเธฒเธขเธฅเธฐเน€เธญเธตเธขเธ”
+                  ”ดูรายละเอียด”
                 </span>
 
                 <span className="flex-1 rounded-full border border-blue-600 px-6 py-3 text-center text-blue-600 font-semibold">
-                  เธชเธกเธฑเธเธฃเธเธดเธเธเธฃเธฃเธก
+                  สมัครกิจกรรม
                 </span>
 
               </div>

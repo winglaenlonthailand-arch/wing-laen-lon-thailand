@@ -19,7 +19,7 @@ export default function RunningActivitySection() {
 
         <p className="mt-4 text-center text-gray-600">
 
-          เธเธฃเธฐเธงเธฑเธ•เธดเธเธฒเธฃเธงเธดเนเธเนเธฅเธฐเธเธดเธเธเธฃเธฃเธกเธเธญเธ Runner
+          ประวัติการวิ่งและกิจกรรมของ Runner
 
         </p>
 

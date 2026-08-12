@@ -5,15 +5,15 @@ import Link from "next/link";
 const passportFeatures = [
   {
     title: "Runner Identity",
-    description: "เธฃเธฐเธเธเธชเธฃเนเธฒเธเธ•เธฑเธงเธ•เธเธเธฑเธเธงเธดเนเธเธ”เธดเธเธดเธ—เธฑเธฅเธเธฃเธฐเธเธณเธ•เธฑเธง",
+    description: "ระบบสร้างตัวตนนักวิ่งดิจิทัลประจำตัว",
   },
   {
     title: "Running History",
-    description: "เธเธฑเธเธ—เธถเธเธเธฃเธฐเธงเธฑเธ•เธดเธเธฒเธฃเธงเธดเนเธเนเธฅเธฐเธเธดเธเธเธฃเธฃเธกเธ—เธตเนเธเนเธฒเธเธกเธฒ",
+    description: "บันทึกประวัติการวิ่งและกิจกรรมที่ผ่านมา",
   },
   {
     title: "Achievement",
-    description: "เธชเธฐเธชเธกเธเธงเธฒเธกเธชเธณเน€เธฃเนเธเนเธฅเธฐเน€เธเนเธฒเธซเธกเธฒเธขเธเธฒเธฃเธงเธดเนเธ",
+    description: "สะสมความสำเร็จและเป้าหมายการวิ่ง",
   },
 ];
 
@@ -30,7 +30,7 @@ export default function PassportPreview() {
           </h2>
 
           <p className="mt-3 text-gray-600">
-            Digital Identity เธชเธณเธซเธฃเธฑเธเธเธฑเธเธงเธดเนเธเธเธฃเธฐเน€เธ—เธจเนเธ—เธข
+            Digital Identity สำหรับนักวิ่งประเทศไทย
           </p>
 
         </div>
@@ -65,7 +65,7 @@ export default function PassportPreview() {
             href="/passport"
             className="inline-block px-8 py-3 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
           >
-            เธชเธฃเนเธฒเธ Runner Passport
+            สร้าง Runner Passport
           </Link>
 
         </div>

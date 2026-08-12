@@ -7,21 +7,21 @@ import Link from "next/link";
 const provinces = [
   {
     rank: 1,
-    name: "เน€เธเธตเธขเธเนเธซเธกเน",
+    name: "เชียงใหม่",
     runners: "1,250",
     distance: "12,500 km",
     slug: "chiang-mai",
   },
   {
     rank: 2,
-    name: "เธเนเธฒเธ",
+    name: "เน่าน",
     runners: "980",
     distance: "9,800 km",
     slug: "nan",
   },
   {
     rank: 3,
-    name: "เธเธฃเธธเธเน€เธ—เธเธกเธซเธฒเธเธเธฃ",
+    name: "กรุงเทพ",
     runners: "850",
     distance: "8,500 km",
     slug: "bangkok",
@@ -41,7 +41,7 @@ export default function ProvinceRanking() {
           </h2>
 
           <p className="mt-3 text-gray-600">
-            เธญเธฑเธเธ”เธฑเธเธเธฑเธเธซเธงเธฑเธ”เธเธฒเธเธเธดเธเธเธฃเธฃเธกเธเธฒเธฃเธงเธดเนเธเธ—เธฑเนเธงเธเธฃเธฐเน€เธ—เธจเนเธ—เธข
+            อันดับจังหวัดจากกิจกรรมการวิ่งทั่วประเทศไทย
           </p>
 
         </div>
@@ -53,19 +53,19 @@ export default function ProvinceRanking() {
           <div className="grid grid-cols-4 gap-4 px-6 py-4 bg-gray-100 font-semibold text-gray-700">
 
             <div>
-              เธญเธฑเธเธ”เธฑเธ
+              อันดับ
             </div>
 
             <div>
-              เธเธฑเธเธซเธงเธฑเธ”
+              จังหวัด”
             </div>
 
             <div>
-              เธเธฑเธเธงเธดเนเธ
+              นักวิ่ง
             </div>
 
             <div>
-              เธฃเธฐเธขเธฐเธ—เธฒเธ
+              ระยะทาง
             </div>
 
           </div>

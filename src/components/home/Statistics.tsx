@@ -5,17 +5,17 @@ import Link from "next/link";
 const statistics = [
   {
     value: "77",
-    label: "เธเธฑเธเธซเธงเธฑเธ”เน€เธเนเธฒเธฃเนเธงเธก",
+    label: "จังหวัดเข้าร่วม",
     href: "/province",
   },
   {
     value: "1,000+",
-    label: "เธเธฑเธเธงเธดเนเธเนเธเธฃเธฐเธเธ",
+    label: "นักวิ่งในระบบ",
     href: "/runner",
   },
   {
     value: "100+",
-    label: "เธเธดเธเธเธฃเธฃเธกเธงเธดเนเธ",
+    label: "กิจกรรมวิ่ง",
     href: "/events",
   },
   {

@@ -498,6 +498,7 @@ export default function RegisterPage() {
 
             <button
               type="button"
+              onClick={() => console.log(form)}
               className="w-full rounded-xl bg-blue-600 px-8 py-4 text-lg font-semibold text-white transition hover:bg-blue-700"
             >
               Create Athlete Passport
@@ -508,3 +509,6 @@ export default function RegisterPage() {
     </main>
   );
 }
+
+
+

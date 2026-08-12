@@ -52,7 +52,7 @@
         </div>
 
         <div className="mt-10 border-t border-gray-700 pt-6 text-sm text-gray-400">
-          ยฉ 2026 WING LAEN LON THAILAND
+          @ 2026 WING LAEN LON THAILAND
         </div>
 
       </div>
