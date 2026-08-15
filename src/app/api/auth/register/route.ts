@@ -280,15 +280,17 @@ export async function POST(request: Request) {
       },
     });
   } catch (error) {
-    console.error(
-      "REGISTER ERROR:",
-      error
-    );
+    console.error("REGISTER ERROR:", error);
+
+    const message =
+      error instanceof Error
+        ? error.message
+        : String(error);
 
     return NextResponse.json(
       {
         success: false,
-        message: "Registration failed",
+        message: `Registration failed: ${message}`,
       },
       { status: 500 }
     );
