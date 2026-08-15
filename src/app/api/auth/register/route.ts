@@ -140,20 +140,38 @@ export async function POST(request: Request) {
       process.env.RESEND_FROM_EMAIL ||
       "onboarding@resend.dev";
 
+    /*
+     * สร้างลิงก์ยืนยันจาก URL ของเว็บไซต์ที่กำลังใช้งาน
+     * รองรับทั้ง localhost และเว็บไซต์จริง
+     */
+    const origin = new URL(request.url).origin;
+
+    const verifyUrl =
+      `${origin}/verify?email=${encodeURIComponent(
+        normalizedEmail
+      )}&code=${encodeURIComponent(
+        verificationCode
+      )}`;
+
     const { data: emailData, error: emailError } =
       await resend.emails.send({
         from: fromEmail,
         to: [normalizedEmail],
         subject:
-          "WING LAEN LON THAILAND - Email Verification",
+          "WING LAEN LON THAILAND - Verify Your Athlete Passport",
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 30px;">
-            <h1 style="color: #2563eb;">
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 30px; color: #111827;">
+
+            <h1 style="color: #2563eb; margin-bottom: 8px;">
               Athlete Passport
             </h1>
 
+            <p style="color: #6b7280; margin-top: 0;">
+              WING LAEN LON THAILAND
+            </p>
+
             <p>
-              Hello ${String(firstName).trim()},
+              Hello <strong>${String(firstName).trim()}</strong>,
             </p>
 
             <p>
@@ -162,16 +180,53 @@ export async function POST(request: Request) {
             </p>
 
             <p>
-              Your email verification code is:
+              Your Athlete Passport has been created.
+              Please verify your email address to activate your account.
             </p>
 
-            <div style="font-size: 36px; font-weight: bold; letter-spacing: 8px; text-align: center; padding: 20px; margin: 20px 0; background: #f3f4f6; border-radius: 12px;">
+            <div style="text-align: center; margin: 30px 0;">
+              <a
+                href="${verifyUrl}"
+                style="
+                  display: inline-block;
+                  background: #2563eb;
+                  color: #ffffff;
+                  text-decoration: none;
+                  padding: 14px 30px;
+                  border-radius: 999px;
+                  font-size: 16px;
+                  font-weight: bold;
+                "
+              >
+                Verify Email
+              </a>
+            </div>
+
+            <p style="text-align: center; color: #6b7280;">
+              กดปุ่มด้านบนเพื่อยืนยันอีเมลอัตโนมัติ
+            </p>
+
+            <p>
+              หากไม่สามารถกดปุ่มได้
+              สามารถใช้รหัสยืนยัน 6 หลักด้านล่าง:
+            </p>
+
+            <div style="
+              font-size: 36px;
+              font-weight: bold;
+              letter-spacing: 8px;
+              text-align: center;
+              padding: 20px;
+              margin: 20px 0;
+              background: #f3f4f6;
+              border-radius: 12px;
+            ">
               ${verificationCode}
             </div>
 
             <p>
-              This verification code will expire in
-              <strong>10 minutes</strong>.
+              รหัสยืนยันและลิงก์นี้จะหมดอายุภายใน
+              <strong>10 นาที</strong>
             </p>
 
             <p>
@@ -181,10 +236,11 @@ export async function POST(request: Request) {
 
             <hr style="margin: 30px 0;" />
 
-            <p style="color: #6b7280; font-size: 14px;">
+            <p style="color: #6b7280; font-size: 14px; line-height: 1.6;">
               WING LAEN LON THAILAND<br />
               Thailand National Athlete Passport Platform
             </p>
+
           </div>
         `,
       });
@@ -212,7 +268,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       message:
-        "Athlete Passport created. Please check your email for the verification code.",
+        "Athlete Passport created. Please check your email and click Verify Email.",
       data: {
         id: athlete.id,
         athleteId: athlete.athleteId,

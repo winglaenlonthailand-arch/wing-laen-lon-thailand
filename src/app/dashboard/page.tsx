@@ -3,22 +3,30 @@ import IntelligenceCard from "@/components/IntelligenceCard";
 
 async function getDashboard() {
   const res = await fetch(
-    "http://localhost:3000/api/dashboard",
+    `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/api/dashboard`,
     {
       cache: "no-store",
     }
   );
+
+  if (!res.ok) {
+    throw new Error("Failed to load dashboard data");
+  }
 
   return res.json();
 }
 
 async function getIntelligence() {
   const res = await fetch(
-    "http://localhost:3000/api/intelligence",
+    `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/api/intelligence`,
     {
       cache: "no-store",
     }
   );
+
+  if (!res.ok) {
+    throw new Error("Failed to load intelligence data");
+  }
 
   return res.json();
 }
@@ -48,7 +56,6 @@ export default async function DashboardPage() {
 
   return (
     <main className="min-h-screen p-8">
-
       <h1 className="text-3xl font-bold mb-6">
         National Runner Dashboard
       </h1>
@@ -68,7 +75,6 @@ export default async function DashboardPage() {
       </h2>
 
       <div className="grid gap-4">
-
         <IntelligenceCard
           title="Top Province"
           value={ai.topProvince}
@@ -88,13 +94,11 @@ export default async function DashboardPage() {
           title="AI Recommendation"
           value={ai.aiRecommendation}
         />
-
       </div>
 
       <p className="mt-6 font-semibold">
         {data.status}
       </p>
-
     </main>
   );
 }

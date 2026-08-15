@@ -29,4 +29,19 @@ model Athlete {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  sessions AuthSession[]
+}
+
+model AuthSession {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  athleteId String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  athlete Athlete @relation(fields: [athleteId], references: [id], onDelete: Cascade)
+
+  @@index([athleteId])
+  @@index([expiresAt])
 }
