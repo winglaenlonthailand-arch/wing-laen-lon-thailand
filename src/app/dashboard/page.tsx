@@ -1,13 +1,29 @@
 ﻿import DashboardCard from "@/components/DashboardCard";
 import IntelligenceCard from "@/components/IntelligenceCard";
+import { headers } from "next/headers";
+
+async function getAppUrl() {
+  if (process.env.NEXT_PUBLIC_APP_URL) {
+    return process.env.NEXT_PUBLIC_APP_URL;
+  }
+
+  const headersList = await headers();
+  const host = headersList.get("host");
+  const protocol = headersList.get("x-forwarded-proto") || "https";
+
+  if (!host) {
+    throw new Error("Unable to determine application host");
+  }
+
+  return `${protocol}://${host}`;
+}
 
 async function getDashboard() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/api/dashboard`,
-    {
-      cache: "no-store",
-    }
-  );
+  const appUrl = await getAppUrl();
+
+  const res = await fetch(`${appUrl}/api/dashboard`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     throw new Error("Failed to load dashboard data");
@@ -17,12 +33,11 @@ async function getDashboard() {
 }
 
 async function getIntelligence() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/api/intelligence`,
-    {
-      cache: "no-store",
-    }
-  );
+  const appUrl = await getAppUrl();
+
+  const res = await fetch(`${appUrl}/api/intelligence`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     throw new Error("Failed to load intelligence data");
