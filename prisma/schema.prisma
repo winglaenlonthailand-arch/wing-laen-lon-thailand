@@ -8,23 +8,31 @@ datasource db {
 }
 
 model Athlete {
-  id                        String        @id @default(cuid())
-  athleteId                 String        @unique
+  id                        String                     @id @default(cuid())
+  athleteId                 String                     @unique
   firstName                 String
   lastName                  String
   nickname                  String?
-  email                     String        @unique
+  email                     String                     @unique
   sports                    Json?
-  level                     String        @default("Beginner")
-  xp                        Int           @default(0)
-  status                    String        @default("pending")
-  createdAt                 DateTime      @default(now())
-  updatedAt                 DateTime      @updatedAt
-  emailVerified             Boolean       @default(false)
+  level                     String                     @default("Beginner")
+  xp                        Int                        @default(0)
+  status                    String                     @default("pending")
+  createdAt                 DateTime                   @default(now())
+  updatedAt                 DateTime                   @updatedAt
+  emailVerified             Boolean                    @default(false)
   passwordHash              String?
   verificationCode          String?
   verificationCodeExpiresAt DateTime?
   sessions                  AuthSession[]
+  runningActivities         RunningActivity[]
+  xpLedger                  XPLedger[]
+  achievements              Achievement[]
+  challengeProgress         ChallengeProgress[]
+  communityMembers          CommunityMember[]
+  contributions             Contribution[]
+  contributionVerifications ContributionVerification[]
+  recognitions              Recognition[]
 }
 
 model AuthSession {
@@ -37,4 +45,185 @@ model AuthSession {
 
   @@index([athleteId])
   @@index([expiresAt])
+}
+
+model RunningActivity {
+  id                 String   @id @default(cuid())
+  athleteId          String
+  sport              String
+  activityDate       DateTime
+  distance           Float
+  duration           Int
+  pace               Float?
+  averageSpeed       Float?
+  elevationGain      Float?
+  gpsRoute           Json?
+  source             String   @default("MANUAL")
+  verificationStatus String   @default("PENDING")
+  externalProvider   String?
+  externalActivityId String?
+  metadata           Json?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  athlete Athlete @relation(fields: [athleteId], references: [id], onDelete: Cascade)
+
+  @@unique([externalProvider, externalActivityId])
+  @@index([athleteId])
+  @@index([activityDate])
+  @@index([verificationStatus])
+  @@index([externalProvider])
+}
+
+model XPLedger {
+  id          String   @id @default(cuid())
+  athleteId   String
+  amount      Int
+  source      String
+  referenceId String?
+  ruleId      String?
+  description String?
+  createdAt   DateTime @default(now())
+
+  athlete Athlete @relation(fields: [athleteId], references: [id], onDelete: Cascade)
+
+  @@index([athleteId])
+  @@index([source])
+  @@index([referenceId])
+}
+
+model Achievement {
+  id              String   @id @default(cuid())
+  athleteId       String
+  achievementType String
+  ruleId          String?
+  referenceId     String?
+  earnedAt        DateTime @default(now())
+  metadata        Json?
+
+  athlete Athlete @relation(fields: [athleteId], references: [id], onDelete: Cascade)
+
+  @@unique([athleteId, achievementType])
+  @@index([athleteId])
+  @@index([achievementType])
+}
+
+model ChallengeProgress {
+  id          String    @id @default(cuid())
+  athleteId   String
+  challengeId String
+  progress    Float     @default(0)
+  target      Float
+  status      String    @default("ACTIVE")
+  startedAt   DateTime  @default(now())
+  completedAt DateTime?
+  updatedAt   DateTime  @updatedAt
+
+  athlete Athlete @relation(fields: [athleteId], references: [id], onDelete: Cascade)
+
+  @@unique([athleteId, challengeId])
+  @@index([athleteId])
+  @@index([challengeId])
+}
+
+model Community {
+  id          String   @id @default(cuid())
+  name        String
+  province    String?
+  district    String?
+  subdistrict String?
+  description String?
+  imageUrl    String?
+  status      String   @default("ACTIVE")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  members       CommunityMember[]
+  contributions Contribution[]
+  verifications ContributionVerification[]
+
+  @@index([province])
+  @@index([status])
+}
+
+model CommunityMember {
+  id          String   @id @default(cuid())
+  communityId String
+  athleteId   String
+  role        String   @default("MEMBER")
+  status      String   @default("ACTIVE")
+  joinedAt    DateTime @default(now())
+
+  community Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
+  athlete   Athlete   @relation(fields: [athleteId], references: [id], onDelete: Cascade)
+
+  @@unique([communityId, athleteId])
+  @@index([athleteId])
+}
+
+model Contribution {
+  id           String   @id @default(cuid())
+  athleteId    String
+  communityId  String
+  activityType String
+  title        String
+  description  String?
+  activityDate DateTime
+  location     String?
+  evidence     Json?
+  status       String   @default("SELF_REPORTED")
+  impactScore  Int?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  athlete       Athlete                    @relation(fields: [athleteId], references: [id], onDelete: Cascade)
+  community     Community                  @relation(fields: [communityId], references: [id], onDelete: Cascade)
+  verifications ContributionVerification[]
+  recognitions  Recognition[]
+
+  @@index([athleteId])
+  @@index([communityId])
+  @@index([activityDate])
+  @@index([status])
+  @@index([activityType])
+}
+
+model ContributionVerification {
+  id               String    @id @default(cuid())
+  contributionId   String
+  communityId      String
+  verifierId       String?
+  verificationType String
+  status           String    @default("PENDING")
+  note             String?
+  verifiedAt       DateTime?
+  createdAt        DateTime  @default(now())
+
+  contribution Contribution @relation(fields: [contributionId], references: [id], onDelete: Cascade)
+  community    Community    @relation(fields: [communityId], references: [id], onDelete: Cascade)
+  verifier     Athlete?     @relation(fields: [verifierId], references: [id], onDelete: SetNull)
+
+  @@index([contributionId])
+  @@index([communityId])
+  @@index([verifierId])
+  @@index([status])
+}
+
+model Recognition {
+  id              String   @id @default(cuid())
+  athleteId       String
+  contributionId  String
+  recognitionType String
+  title           String
+  description     String?
+  awardedBy       String?
+  awardedAt       DateTime @default(now())
+  metadata        Json?
+
+  athlete      Athlete      @relation(fields: [athleteId], references: [id], onDelete: Cascade)
+  contribution Contribution @relation(fields: [contributionId], references: [id], onDelete: Cascade)
+
+  @@index([athleteId])
+  @@index([contributionId])
+  @@index([recognitionType])
 }
