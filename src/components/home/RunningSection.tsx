@@ -1,39 +1,35 @@
 ﻿const activities = [
   {
-    icon: "๐",
+    icon: "🏃",
     title: "Running Events",
-    description: "เธฃเธงเธกเธเธดเธเธเธฃเธฃเธกเธงเธดเนเธเธ—เธฑเนเธงเธเธฃเธฐเน€เธ—เธจเนเธ—เธข",
+    description: "รวมกิจกรรมวิ่งทั่วประเทศไทย",
   },
   {
-    icon: "๐…",
+    icon: "🏆",
     title: "Marathon Network",
-    description: "เน€เธเธทเนเธญเธกเนเธขเธเธชเธเธฒเธกเธงเธดเนเธเนเธฅเธฐเธเธฑเธเธงเธดเนเธ",
+    description: "เชื่อมโยงสนามวิ่งและนักวิ่ง",
   },
   {
-    icon: "๐‘ฅ",
+    icon: "👥",
     title: "Runner Community",
-    description: "เธชเธฃเนเธฒเธเน€เธเธฃเธทเธญเธเนเธฒเธขเธเธฑเธเธงเธดเนเธเธ—เธฑเนเธงเธเธฃเธฐเน€เธ—เธจ",
+    description: "สร้างเครือข่ายนักวิ่งทั่วประเทศ",
   },
 ];
 
 export default function RunningSection() {
   return (
     <section className="bg-gray-50 py-16">
-
       <div className="mx-auto max-w-7xl px-6">
-
         <h2 className="mb-8 text-3xl font-bold">
           Running Activity Network
         </h2>
 
         <div className="grid gap-6 md:grid-cols-3">
-
           {activities.map((activity) => (
             <div
               key={activity.title}
               className="rounded-2xl border bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
-
               <div className="text-4xl">
                 {activity.icon}
               </div>
@@ -45,14 +41,10 @@ export default function RunningSection() {
               <p className="mt-3 text-gray-600">
                 {activity.description}
               </p>
-
             </div>
           ))}
-
         </div>
-
       </div>
-
     </section>
   );
 }

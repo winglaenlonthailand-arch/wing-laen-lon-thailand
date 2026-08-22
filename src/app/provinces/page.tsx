@@ -23,7 +23,7 @@ export default function ProvinceRankingPage() {
         </h1>
 
         <p className="mb-8 text-gray-600">
-          เธเธฑเธเธซเธงเธฑเธ”เธ—เธฑเนเธเธซเธกเธ”เนเธเธฃเธฐเธเธ WING LAEN LON THAILAND
+          จังหวัดทั้งหมดในระบบ WING LAEN LON THAILAND
         </p>
 
         <div className="grid gap-4">

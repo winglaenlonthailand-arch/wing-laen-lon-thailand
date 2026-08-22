@@ -44,7 +44,7 @@ export default function PartnerRegisterPage() {
           </h1>
 
           <p className="mt-4 text-gray-600">
-            เธชเธกเธฑเธเธฃเน€เธเนเธฒเธฃเนเธงเธกเธฃเธฐเธเธ Partner เธเธญเธ WING LAEN LON THAILAND
+            สมัครเข้าร่วมระบบ Partner ของ WING LAEN LON THAILAND
           </p>
 
         </div>
@@ -57,7 +57,7 @@ export default function PartnerRegisterPage() {
 
           <div>
             <label className="block mb-2 font-semibold text-gray-900">
-              เธเธทเนเธญเธเธฃเธดเธฉเธฑเธ— / เนเธเธฃเธเธ”เน
+              ชื่อบริษัท / แบรนด์
             </label>
 
             <input
@@ -71,7 +71,7 @@ export default function PartnerRegisterPage() {
 
           <div>
             <label className="block mb-2 font-semibold text-gray-900">
-              เธเธฃเธฐเน€เธ เธ— Partner
+              ประเภท Partner
             </label>
 
             <select
@@ -82,19 +82,19 @@ export default function PartnerRegisterPage() {
             >
 
               <option value="">
-                เน€เธฅเธทเธญเธเธเธฃเธฐเน€เธ เธ—
+                เลือกประเภท
               </option>
 
               <option value="Sports">
-                เธฃเธญเธเน€เธ—เนเธฒ / เน€เธชเธทเนเธญเธเนเธฒ / เธญเธธเธเธเธฃเธ“เนเธเธตเธฌเธฒ
+                รองเท้า / เสื้อผ้า / อุปกรณ์กีฬา
               </option>
 
               <option value="Health">
-                เน€เธเธฃเธทเนเธญเธเธ”เธทเนเธก / เธชเธธเธเธ เธฒเธ / Nutrition
+                เครื่องดื่ม / สุขภาพ / Nutrition
               </option>
 
               <option value="Community">
-                เธเธธเธกเธเธ / เธ—เนเธญเธเน€เธ—เธตเนเธขเธง / เธเธธเธฃเธเธดเธเธ—เนเธญเธเธ–เธดเนเธ
+                ชุมชน / ท่องเที่ยว / ธุรกิจท้องถิ่น
               </option>
 
             </select>
@@ -104,7 +104,7 @@ export default function PartnerRegisterPage() {
 
           <div>
             <label className="block mb-2 font-semibold text-gray-900">
-              เธเธทเนเธญเธเธนเนเธ•เธดเธ”เธ•เนเธญ
+              ชื่อผู้ติดต่อ
             </label>
 
             <input
@@ -118,7 +118,7 @@ export default function PartnerRegisterPage() {
 
           <div>
             <label className="block mb-2 font-semibold text-gray-900">
-              เน€เธเธญเธฃเนเนเธ—เธฃเธจเธฑเธเธ—เน
+              เบอร์โทรศัพท์
             </label>
 
             <input
@@ -160,7 +160,7 @@ export default function PartnerRegisterPage() {
 
           <div>
             <label className="block mb-2 font-semibold text-gray-900">
-              เธฃเธฒเธขเธฅเธฐเน€เธญเธตเธขเธ”เธชเธดเธเธเนเธฒเนเธฅเธฐเธเธฃเธดเธเธฒเธฃ
+              รายละเอียดสินค้าและบริการ
             </label>
 
             <textarea
@@ -177,7 +177,7 @@ export default function PartnerRegisterPage() {
             type="submit"
             className="w-full rounded-full bg-blue-600 px-8 py-4 text-white font-semibold hover:bg-blue-700 transition"
           >
-            เธชเนเธเนเธเธชเธกเธฑเธเธฃ Partner
+            ส่งใบสมัคร Partner
           </button>
 
 

@@ -22,7 +22,7 @@ export default function SignupPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    setMessage("เธเธณเธฅเธฑเธเธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธ...");
+    setMessage("กำลังสมัครสมาชิก......");
 
     try {
       const res = await fetch("/api/auth/register", {
@@ -36,25 +36,25 @@ export default function SignupPage() {
       const data = await res.json();
 
       if (res.ok) {
-        setMessage("เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธเธชเธณเน€เธฃเนเธ");
+        setMessage("สมัครสมาชิกสำเร็จ");
       } else {
-        setMessage(data.message || "เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธเนเธกเนเธชเธณเน€เธฃเนเธ");
+        setMessage(data.message || "สมัครสมาชิกไม่สำเร็จ");
       }
     } catch (error) {
-      setMessage("เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เนเธเธเธฒเธฃเน€เธเธทเนเธญเธกเธ•เนเธญเธฃเธฐเธเธ");
+      setMessage("เกิดข้อผิดพลาดในการเชื่อมต่อระบบ");
     }
   };
 
   return (
     <main>
       <div>
-        <h1>เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธ</h1>
+        <h1>สมัครสมาชิก</h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             name="name"
             type="text"
-            placeholder="เธเธทเนเธญ"
+            placeholder="ชื่อ"
             value={form.name}
             onChange={handleChange}
             className="w-full border rounded p-3"
@@ -86,9 +86,9 @@ export default function SignupPage() {
               type="button"
               onClick={() => setShowPassword(!showPassword)}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600"
-              aria-label={showPassword ? "เธเนเธญเธ Password" : "เนเธชเธ”เธ Password"}
+              aria-label={showPassword ? "ซ่อน Password" : "แสดง Password"}
             >
-              {showPassword ? "๐" : "๐‘๏ธ"}
+              {showPassword ? "🙈" : "👁️"}
             </button>
           </div>
 
@@ -96,7 +96,7 @@ export default function SignupPage() {
             type="submit"
             className="w-full bg-blue-600 text-white rounded p-3"
           >
-            เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธ
+            สมัครสมาชิก
           </button>
         </form>
 

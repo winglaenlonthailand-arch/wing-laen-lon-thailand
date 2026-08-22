@@ -19,7 +19,7 @@ export default function PartnerAnalyticsPage() {
 
         <p className="mt-4 text-gray-600">
 
-          เธฃเธฐเธเธเธงเธดเน€เธเธฃเธฒเธฐเธซเนเธเธฃเธฐเธชเธดเธ—เธเธดเธ เธฒเธ Partner Campaign
+          ระบบวิเคราะห์ประสิทธิภาพ Partner Campaign
 
         </p>
 

@@ -3,21 +3,21 @@
 const challenges = [
   {
     name: "Thailand Running Challenge 2027",
-    province: "เธ—เธฑเนเธงเธเธฃเธฐเน€เธ—เธจ",
+    province: "ทั่วประเทศ",
     level: "National",
     reward: "500,000 THB",
     status: "Open",
   },
   {
     name: "Nan Community Run",
-    province: "เธเนเธฒเธ",
+    province: "น่าน",
     level: "Province",
     reward: "50,000 THB",
     status: "Active",
   },
   {
     name: "Chiang Mai Mountain Challenge",
-    province: "เน€เธเธตเธขเธเนเธซเธกเน",
+    province: "เชียงใหม่",
     level: "Advanced",
     reward: "100,000 THB",
     status: "Upcoming",

@@ -8,25 +8,33 @@ datasource db {
 }
 
 model Athlete {
-  id        String @id @default(cuid())
-  athleteId String @unique
-
-  firstName String
-  lastName  String
-  nickname  String?
-
-  email String @unique
-
+  id                        String        @id @default(cuid())
+  athleteId                 String        @unique
+  firstName                 String
+  lastName                  String
+  nickname                  String?
+  email                     String        @unique
+  sports                    Json?
+  level                     String        @default("Beginner")
+  xp                        Int           @default(0)
+  status                    String        @default("pending")
+  createdAt                 DateTime      @default(now())
+  updatedAt                 DateTime      @updatedAt
+  emailVerified             Boolean       @default(false)
   passwordHash              String?
-  emailVerified             Boolean   @default(false)
   verificationCode          String?
   verificationCodeExpiresAt DateTime?
+  sessions                  AuthSession[]
+}
 
-  sports Json?
-  level  String @default("Beginner")
-  xp     Int    @default(0)
-  status String @default("pending")
-
+model AuthSession {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  athleteId String
+  expiresAt DateTime
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  athlete   Athlete  @relation(fields: [athleteId], references: [id], onDelete: Cascade)
+
+  @@index([athleteId])
+  @@index([expiresAt])
 }

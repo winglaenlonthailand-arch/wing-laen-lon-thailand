@@ -23,28 +23,28 @@ export default function DashboardSection() {
 
   const dashboardData = [
     {
-      icon: "๐",
+      icon: "🏃",
       value: runnerCount,
       title: "Total Runners",
-      description: "เธเธณเธเธงเธเธเธฑเธเธงเธดเนเธเนเธเธฃเธฐเธเธ",
+      description: "จำนวนนักวิ่งในระบบ",
     },
     {
-      icon: "๐…",
+      icon: "🏅",
       value: eventCount,
       title: "Running Activities",
-      description: "เธเธดเธเธเธฃเธฃเธกเธงเธดเนเธเธ—เธฑเนเธงเธเธฃเธฐเน€เธ—เธจ",
+      description: "กิจกรรมวิ่งทั่วประเทศ",
     },
     {
-      icon: "๐—บ๏ธ",
+      icon: "🗺️",
       value: provinceCount,
       title: "Active Provinces",
-      description: "เธเธฑเธเธซเธงเธฑเธ”เธ•เธฑเธงเธญเธขเนเธฒเธเนเธเธฃเธฐเธเธ",
+      description: "จังหวัดตัวอย่างในระบบ",
     },
     {
-      icon: "๐ค–",
+      icon: "⚡",
       value: "READY",
       title: "AI Engine",
-      description: "เธเธฃเนเธญเธกเน€เธเธทเนเธญเธก AI Platform",
+      description: "พร้อมเชื่อม AI Platform",
     },
   ];
 

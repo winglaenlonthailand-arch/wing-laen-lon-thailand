@@ -25,7 +25,7 @@ export default function EventsPage() {
 
 
         <p className="mb-6 text-gray-600">
-          เธฃเธฐเธเธเธเธดเธเธเธฃเธฃเธกเธงเธดเนเธ WING LAEN LON THAILAND
+          ระบบกิจกรรมวิ่ง WING LAEN LON THAILAND
         </p>
 
 
